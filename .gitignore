@@ -1,25 +1,19 @@
+# Foldere temporare Unity
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /[Logs]/
-/[MemoryCaptures]/
-/[Aa]rtifacts/
 /UserSettings/
 
-# Fișiere de soluție (Visual Studio/Rider) - Acestea NU trebuie să fie pe Git
-*.csproj
+# Fișiere de soluție Visual Studio (inclusiv noul format .slnx)
 *.sln
+*.slnx
+*.csproj
 *.user
-*.userprefs
-*.dotSettings.user
 .vs/
-.idea/
+.vscode/
 
-# Package Lock - Aceasta e cauza principală a erorilor de semnătură pe Unity 6
-[Pp]ackages/package-lock.json
-
-# Fișiere de sistem
-.DS_Store
-Thumbs.db
+# Fișierul de lock (foarte important!)
+/[Pp]ackages/packages-lock.json
