@@ -1,7 +1,25 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-Logs/
-UserSettings/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Logs]/
+/[MemoryCaptures]/
+/[Aa]rtifacts/
+/UserSettings/
+
+# Fișiere de soluție (Visual Studio/Rider) - Acestea NU trebuie să fie pe Git
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.dotSettings.user
+.vs/
+.idea/
+
+# Package Lock - Aceasta e cauza principală a erorilor de semnătură pe Unity 6
+[Pp]ackages/package-lock.json
+
+# Fișiere de sistem
+.DS_Store
+Thumbs.db
