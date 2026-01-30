@@ -2,34 +2,35 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [Header("Legaturi")]
+    public Animator soldierAnimator; // <--- TRAGE AICI SURVIVALIST-UL (COPILUL)
+
     [Header("Viteze")]
-    public float vitezaInainte = 15f; // Viteza constanta in fata
+    public float vitezaInainte = 15f; 
     
     [Header("Setari Touch & PC")]
-    public float limitaStangaDreapta = 5f; // Cat de mult poti merge in laterale (limita drumului)
-    public float sensibilitateTouch = 0.01f; // Cat de fin se misca pe telefon
-    public float vitezaTaste = 10f; // Viteza pe PC (A/D)
+    public float limitaStangaDreapta = 5f; 
+    public float sensibilitateTouch = 0.01f; 
+    public float vitezaTaste = 10f; 
 
-    private Rigidbody rb;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    private float valoareAnimatie = 0f; // Tinem minte directia pentru animatie
 
     void Update()
     {
         // 1. Calculam miscarea (Momentan e 0)
         float miscareX = 0f;
+        float targetAnimatie = 0f; // Unde vrea sa ajunga animatia (-1, 0, sau 1)
 
         // --- VARIANTA PC (Taste) ---
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             miscareX = -vitezaTaste * Time.deltaTime;
+            targetAnimatie = -1f; // Animatie Stanga
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             miscareX = vitezaTaste * Time.deltaTime;
+            targetAnimatie = 1f; // Animatie Dreapta
         }
 
         // --- VARIANTA TELEFON (Touch / Swipe) ---
@@ -37,28 +38,37 @@ public class PlayerMove : MonoBehaviour
         {
             Touch atingere = Input.GetTouch(0);
 
-            // Daca degetul se misca pe ecran
             if (atingere.phase == TouchPhase.Moved)
             {
-                // deltaPosition.x ne zice cat s-a miscat degetul fata de frame-ul trecut
+                // Calculam miscarea fizica
                 miscareX = atingere.deltaPosition.x * sensibilitateTouch;
+
+                // Calculam animatia bazat pe cat de tare tragi
+                // Daca tragi spre stanga, valoarea devine negativa. Spre dreapta, pozitiva.
+                // Inmultim cu 0.5f ca sa fie nevoie de o miscare mai ampla pentru a inclina maxim.
+                targetAnimatie = Mathf.Clamp(atingere.deltaPosition.x * 0.2f, -1f, 1f);
             }
         }
 
-        // 2. Aplicam miscarea la pozitia actuala
+        // 2. Trimitem datele la ANIMATOR (Cu Smoothness)
+        // Asta face trecerea fina, sa nu sara brusc animatia
+        if (soldierAnimator != null)
+        {
+            // Lerp face trecerea lina de la valoarea curenta la cea dorita
+            valoareAnimatie = Mathf.Lerp(valoareAnimatie, targetAnimatie, 10f * Time.deltaTime);
+            soldierAnimator.SetFloat("InputX", valoareAnimatie);
+        }
+
+        // 3. Aplicam miscarea fizica la pozitie
         Vector3 pozitieNoua = transform.position;
         
         // Adaugam miscarea laterala (X)
         pozitieNoua.x += miscareX;
         
-        // Miscare constanta in fata (Z) - Optional, daca vrei sa mearga singur
-        // Daca drumul se misca sub el, lasa linia asta comentata sau sterge-o.
-        // pozitieNoua.z += vitezaInainte * Time.deltaTime; 
-
-        // 3. Limitam miscarea sa nu iasa de pe drum (Clamp)
+        // Limitam miscarea sa nu iasa de pe drum
         pozitieNoua.x = Mathf.Clamp(pozitieNoua.x, -limitaStangaDreapta, limitaStangaDreapta);
 
-        // 4. Mutam playerul
+        // Mutam playerul
         transform.position = pozitieNoua;
     }
 }
