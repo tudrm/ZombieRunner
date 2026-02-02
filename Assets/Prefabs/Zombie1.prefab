@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b881876eccc7f54d8a542ce8e07053e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieHealth
-  viata: 4
+  viata: 100
   distantaStergere: 10
 --- !u!114 &7239132102497390449
 MonoBehaviour:

@@ -2,38 +2,45 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    public float viteza = 100f;
-    public int putereLovitura = 1;
-    private Rigidbody rb;
+    [Header("Setari Glont")]
+    public float viteza = 40f;
+    public float timpViata = 2f;
+    public int damage = 25; // 25 Damage x 4 Gloante = 100 Viata
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        
-        // In Unity 6 se foloseste linearVelocity
-        if (rb != null)
-        {
-            rb.linearVelocity = transform.forward * viteza;
-        }
-        
-        // Se distruge singur dupa 3 secunde daca nu atinge nimic, sa nu incarce memoria
-        Destroy(gameObject, 3f);
+        // Distruge glontul automat dupa 2 secunde daca nu atinge nimic
+        Destroy(gameObject, timpViata);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void Update()
     {
-        // 1. Verificam daca am lovit un "Inamic"
-        if (collision.gameObject.CompareTag("Inamic"))
+        // Misca glontul in fata
+        transform.Translate(Vector3.forward * viteza * Time.deltaTime);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // 1. Verificam daca am lovit ceva cu tag-ul "Inamic"
+        if (other.CompareTag("Inamic"))
         {
-            ZombieHealth inamic = collision.gameObject.GetComponent<ZombieHealth>();
+            // Cautam scriptul TAU vechi "ZombieHealth" pe obiectul lovit
+            ZombieHealth zombieScript = other.GetComponent<ZombieHealth>();
 
-            if (inamic != null)
+            // Daca l-am gasit, ii dam damage
+            if (zombieScript != null)
             {
-                inamic.PrimesteDamage(putereLovitura);
+                // Apelam functia TA: PrimesteDamage
+                zombieScript.PrimesteDamage(damage);
             }
-        }
 
-        // 2. Distrugem glontul la orice impact
-        Destroy(gameObject);
+            // Distrugem GLONTUL (foarte important: doar glontul, nu zombielul!)
+            Destroy(gameObject);
+        }
+        // 2. Daca lovim decorul (orice nu e Player si nu e Inamic)
+        else if (!other.CompareTag("Player") && !other.CompareTag("Untagged"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
