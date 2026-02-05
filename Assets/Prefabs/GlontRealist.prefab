@@ -247,4 +247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletMove
   viteza: 100
-  putereLovitura: 1
+  timpViata: 2
+  damage: 25
+  collisionEffectPrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}

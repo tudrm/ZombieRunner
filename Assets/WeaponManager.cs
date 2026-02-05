@@ -10,18 +10,31 @@ public class WeaponManager : MonoBehaviour
     public GameObject smgObject;
     public GameObject rifleObject;
 
-    [Header("Puncte de Tragere (Muzzles)")]
-    public Transform pistolMuzzle; // Trage aici Muzzle de la Pistol
-    public Transform smgMuzzle;    // Trage aici Muzzle de la SMG
-    public Transform rifleMuzzle;  // Trage aici Muzzle de la Rifle
+    [Header("Puncte de Tragere")]
+    public Transform pistolMuzzle; 
+    public Transform smgMuzzle;    
+    public Transform rifleMuzzle;  
 
-    // Aceasta variabila va fi citita de scriptul de tragere
-    // [HideInInspector] inseamna ca e public dar nu vrem sa il vedem in editor
+    [Header("Efecte Vizuale")]
+    public GameObject pistolFlashPrefab;
+    public GameObject smgFlashPrefab;
+    public GameObject rifleFlashPrefab;
+
+    [Header("Sunete Arme")]
+    public AudioClip pistolSound;
+    public AudioClip smgSound;
+    public AudioClip rifleSound;
+
+    // Variabile interne
     [HideInInspector] public Transform currentFirePoint; 
+    [HideInInspector] public GameObject currentFlashPrefab; 
+    [HideInInspector] public AudioClip currentAudioClip; 
+    [HideInInspector] public float currentFireRate;      
+    [HideInInspector] public bool isAutomatic;           
 
     void Start()
     {
-        EquipPistol1(); // Start cu pistol
+        EquipPistol1(); 
     }
 
     void Update()
@@ -39,8 +52,17 @@ public class WeaponManager : MonoBehaviour
 
         if(soldierAnimator != null) soldierAnimator.SetBool("HasRifle", false);
 
-        // ACTUALIZAM PUNCTUL DE TRAGERE
+        // CONFIGURARE PISTOL (MODIFICAT)
         currentFirePoint = pistolMuzzle;
+        currentFlashPrefab = pistolFlashPrefab;
+        currentAudioClip = pistolSound;
+        
+        // AICI E SCHIMBAREA MARE:
+        // Punem 0.05f (50 milisecunde). E practic instantaneu pentru degetul uman,
+        // dar pastram o mica limita tehnica sa nu blocheze jocul daca ai un macro.
+        currentFireRate = 0.05f; 
+        
+        isAutomatic = false; // Trebuie apasat de fiecare data
     }
 
     void EquipSMG1()
@@ -51,8 +73,16 @@ public class WeaponManager : MonoBehaviour
 
         if (soldierAnimator != null) soldierAnimator.SetBool("HasRifle", true);
 
-        // ACTUALIZAM PUNCTUL DE TRAGERE
+        // CONFIGURARE SMG (MODIFICAT)
         currentFirePoint = smgMuzzle;
+        currentFlashPrefab = smgFlashPrefab;
+        currentAudioClip = smgSound;
+        
+        // SMG-ul trage MEDIU (mai rar decat Rifle, dar automat)
+        // 0.15f inseamna cam 6-7 gloante pe secunda
+        currentFireRate = 0.12f; 
+        
+        isAutomatic = true; 
     }
 
     void EquipRifle1()
@@ -63,7 +93,15 @@ public class WeaponManager : MonoBehaviour
 
         if (soldierAnimator != null) soldierAnimator.SetBool("HasRifle", true);
 
-        // ACTUALIZAM PUNCTUL DE TRAGERE
+        // CONFIGURARE RIFLE (MODIFICAT)
         currentFirePoint = rifleMuzzle;
+        currentFlashPrefab = rifleFlashPrefab;
+        currentAudioClip = rifleSound;
+        
+        // RIFLE-ul trage FOARTE RAPID (Mitraliera grea)
+        // 0.08f inseamna cam 12 gloante pe secunda
+        currentFireRate = 0.10f; 
+        
+        isAutomatic = true; 
     }
 }
