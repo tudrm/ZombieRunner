@@ -20,15 +20,21 @@ public class WeaponManager : MonoBehaviour
     public GameObject smgFlashPrefab;
     public GameObject rifleFlashPrefab;
 
-    [Header("Sunete Arme")]
+    [Header("Sunete Arme & Volum")]
     public AudioClip pistolSound;
+    [Range(0f, 1f)] public float pistolVolume = 1f; // Slider volum (Maxim)
+
     public AudioClip smgSound;
+    [Range(0f, 1f)] public float smgVolume = 0.4f; // Slider volum (Mai incet)
+
     public AudioClip rifleSound;
+    [Range(0f, 1f)] public float rifleVolume = 0.3f; // Slider volum (Cel mai incet, ca trage des)
 
     // Variabile interne
     [HideInInspector] public Transform currentFirePoint; 
     [HideInInspector] public GameObject currentFlashPrefab; 
-    [HideInInspector] public AudioClip currentAudioClip; 
+    [HideInInspector] public AudioClip currentAudioClip;
+    [HideInInspector] public float currentAudioVolume; // Aici tinem minte volumul armei curente
     [HideInInspector] public float currentFireRate;      
     [HideInInspector] public bool isAutomatic;           
 
@@ -52,17 +58,15 @@ public class WeaponManager : MonoBehaviour
 
         if(soldierAnimator != null) soldierAnimator.SetBool("HasRifle", false);
 
-        // CONFIGURARE PISTOL (MODIFICAT)
         currentFirePoint = pistolMuzzle;
         currentFlashPrefab = pistolFlashPrefab;
+        
+        // Audio
         currentAudioClip = pistolSound;
-        
-        // AICI E SCHIMBAREA MARE:
-        // Punem 0.05f (50 milisecunde). E practic instantaneu pentru degetul uman,
-        // dar pastram o mica limita tehnica sa nu blocheze jocul daca ai un macro.
+        currentAudioVolume = pistolVolume; // Setam volumul de pistol
+
         currentFireRate = 0.05f; 
-        
-        isAutomatic = false; // Trebuie apasat de fiecare data
+        isAutomatic = false; 
     }
 
     void EquipSMG1()
@@ -73,15 +77,14 @@ public class WeaponManager : MonoBehaviour
 
         if (soldierAnimator != null) soldierAnimator.SetBool("HasRifle", true);
 
-        // CONFIGURARE SMG (MODIFICAT)
         currentFirePoint = smgMuzzle;
         currentFlashPrefab = smgFlashPrefab;
+
+        // Audio
         currentAudioClip = smgSound;
-        
-        // SMG-ul trage MEDIU (mai rar decat Rifle, dar automat)
-        // 0.15f inseamna cam 6-7 gloante pe secunda
-        currentFireRate = 0.12f; 
-        
+        currentAudioVolume = smgVolume; // Setam volumul de SMG
+
+        currentFireRate = 0.15f; 
         isAutomatic = true; 
     }
 
@@ -93,15 +96,14 @@ public class WeaponManager : MonoBehaviour
 
         if (soldierAnimator != null) soldierAnimator.SetBool("HasRifle", true);
 
-        // CONFIGURARE RIFLE (MODIFICAT)
         currentFirePoint = rifleMuzzle;
         currentFlashPrefab = rifleFlashPrefab;
+
+        // Audio
         currentAudioClip = rifleSound;
-        
-        // RIFLE-ul trage FOARTE RAPID (Mitraliera grea)
-        // 0.08f inseamna cam 12 gloante pe secunda
-        currentFireRate = 0.10f; 
-        
+        currentAudioVolume = rifleVolume; // Setam volumul de Rifle
+
+        currentFireRate = 0.08f; 
         isAutomatic = true; 
     }
 }

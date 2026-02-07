@@ -2571,11 +2571,15 @@ MonoBehaviour:
   smgFlashPrefab: {fileID: 100006, guid: 7e9c50938e32351438a7df9ccad2f2a5, type: 3}
   rifleFlashPrefab: {fileID: 100002, guid: eb553b67921c92649ac7dbbc561e2047, type: 3}
   pistolSound: {fileID: 8300000, guid: b8088a59c226e92408fbbd6e01c9a08b, type: 3}
+  pistolVolume: 0.094
   smgSound: {fileID: 8300000, guid: 0ada35ccea2acbf40ba75dad27813901, type: 3}
+  smgVolume: 0.1
   rifleSound: {fileID: 8300000, guid: fc2cf9240896a414190ed702a69e4990, type: 3}
+  rifleVolume: 0.094
   currentFirePoint: {fileID: 0}
   currentFlashPrefab: {fileID: 0}
   currentAudioClip: {fileID: 0}
+  currentAudioVolume: 0
   currentFireRate: 0
   isAutomatic: 0
 --- !u!1 &1885055357
