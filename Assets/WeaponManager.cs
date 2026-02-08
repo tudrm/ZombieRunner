@@ -5,36 +5,36 @@ public class WeaponManager : MonoBehaviour
     [Header("Referinte")]
     public Animator soldierAnimator; 
 
-    [Header("Arme (Modele 3D)")]
+    // --- AICI SUNT SLIDERELE UNIVERSALE ---
+    [Header("SETTINGS: MASTER VOLUME (Categorii)")]
+    [Range(0f, 1f)] public float globalPistolVolume = 1f; 
+    [Range(0f, 1f)] public float globalSmgVolume = 0.4f; 
+    [Range(0f, 1f)] public float globalRifleVolume = 0.3f; 
+    // ---------------------------------------
+
+    [Header("ARMA 1: PISTOL STANDARD")]
     public GameObject pistolObject;
-    public GameObject smgObject;
-    public GameObject rifleObject;
-
-    [Header("Puncte de Tragere")]
     public Transform pistolMuzzle; 
-    public Transform smgMuzzle;    
-    public Transform rifleMuzzle;  
-
-    [Header("Efecte Vizuale")]
     public GameObject pistolFlashPrefab;
-    public GameObject smgFlashPrefab;
-    public GameObject rifleFlashPrefab;
-
-    [Header("Sunete Arme & Volum")]
     public AudioClip pistolSound;
-    [Range(0f, 1f)] public float pistolVolume = 1f; // Slider volum (Maxim)
 
+    [Header("ARMA 2: SMG STANDARD")]
+    public GameObject smgObject;
+    public Transform smgMuzzle;    
+    public GameObject smgFlashPrefab;
     public AudioClip smgSound;
-    [Range(0f, 1f)] public float smgVolume = 0.4f; // Slider volum (Mai incet)
 
+    [Header("ARMA 3: RIFLE STANDARD")]
+    public GameObject rifleObject;
+    public Transform rifleMuzzle;  
+    public GameObject rifleFlashPrefab;
     public AudioClip rifleSound;
-    [Range(0f, 1f)] public float rifleVolume = 0.3f; // Slider volum (Cel mai incet, ca trage des)
 
     // Variabile interne
     [HideInInspector] public Transform currentFirePoint; 
     [HideInInspector] public GameObject currentFlashPrefab; 
     [HideInInspector] public AudioClip currentAudioClip;
-    [HideInInspector] public float currentAudioVolume; // Aici tinem minte volumul armei curente
+    [HideInInspector] public float currentAudioVolume; 
     [HideInInspector] public float currentFireRate;      
     [HideInInspector] public bool isAutomatic;           
 
@@ -60,10 +60,10 @@ public class WeaponManager : MonoBehaviour
 
         currentFirePoint = pistolMuzzle;
         currentFlashPrefab = pistolFlashPrefab;
-        
-        // Audio
         currentAudioClip = pistolSound;
-        currentAudioVolume = pistolVolume; // Setam volumul de pistol
+
+        // AICI FOLOSIM VOLUMUL GLOBAL PENTRU TOATE PISTOALELE
+        currentAudioVolume = globalPistolVolume; 
 
         currentFireRate = 0.05f; 
         isAutomatic = false; 
@@ -79,12 +79,12 @@ public class WeaponManager : MonoBehaviour
 
         currentFirePoint = smgMuzzle;
         currentFlashPrefab = smgFlashPrefab;
-
-        // Audio
         currentAudioClip = smgSound;
-        currentAudioVolume = smgVolume; // Setam volumul de SMG
 
-        currentFireRate = 0.15f; 
+        // VOLUM GLOBAL SMG
+        currentAudioVolume = globalSmgVolume; 
+
+        currentFireRate = 0.13f; 
         isAutomatic = true; 
     }
 
@@ -98,12 +98,12 @@ public class WeaponManager : MonoBehaviour
 
         currentFirePoint = rifleMuzzle;
         currentFlashPrefab = rifleFlashPrefab;
-
-        // Audio
         currentAudioClip = rifleSound;
-        currentAudioVolume = rifleVolume; // Setam volumul de Rifle
 
-        currentFireRate = 0.08f; 
+        // VOLUM GLOBAL RIFLE
+        currentAudioVolume = globalRifleVolume; 
+
+        currentFireRate = 0.10f; 
         isAutomatic = true; 
     }
 }
