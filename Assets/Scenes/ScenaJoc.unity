@@ -203,7 +203,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 684200735}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ButonExit
+        m_MethodName: IntoarceLaMeniu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

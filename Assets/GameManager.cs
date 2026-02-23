@@ -49,9 +49,17 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    // ---------- FUNCTIA NOUA ----------
+    public void IntoarceLaMeniu()
+    {
+        Time.timeScale = 1; // DEZGHETAM TIMPUL (Crucial!)
+        SceneManager.LoadScene("MainMenu"); // Incarcam Meniul Principal
+    }
+    // ----------------------------------
+
     public void ButonExit()
     {
         Debug.Log("Exit Joc");
-        Application.Quit();
+        Application.Quit(); // Asta te scoate de tot din joc (bun pentru un buton de QUIT pe viitor)
     }
 }
