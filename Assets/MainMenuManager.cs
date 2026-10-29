@@ -7,9 +7,49 @@ public class MainMenuManager : MonoBehaviour
 {
     public GameObject loadingPanel; 
     public Image loadingBar;        
+    private bool isLoading;
+    public RectTransform menuSafeArea, menuArtwork, playButton, shopButton, lockerButton, settingsButton;
+    private Vector2 menuSize;
+    private Rect lastSafeArea;
+
+    void Update()
+    {
+        if (menuSafeArea == null) return;
+        if (menuSize == new Vector2(Screen.width, Screen.height) && lastSafeArea == Screen.safeArea) return;
+        menuSize = new Vector2(Screen.width, Screen.height);
+        lastSafeArea = Screen.safeArea;
+        menuSafeArea.anchorMin = new Vector2(lastSafeArea.xMin / Screen.width, lastSafeArea.yMin / Screen.height);
+        menuSafeArea.anchorMax = new Vector2(lastSafeArea.xMax / Screen.width, lastSafeArea.yMax / Screen.height);
+        menuSafeArea.offsetMin = menuSafeArea.offsetMax = Vector2.zero;
+        bool wide = Screen.width > Screen.height * 1.15f;
+        Place(menuArtwork, 0, 0, wide ? .6f : 1, 1);
+        if (wide)
+        {
+            Place(playButton, .64f, .66f, .94f, .84f);
+            Place(shopButton, .64f, .46f, .94f, .62f);
+            Place(lockerButton, .64f, .26f, .94f, .42f);
+            Place(settingsButton, .64f, .08f, .94f, .22f);
+        }
+        else
+        {
+            Place(playButton, .18f, .255f, .82f, .33f);
+            Place(shopButton, .18f, .165f, .49f, .235f);
+            Place(lockerButton, .51f, .165f, .82f, .235f);
+            Place(settingsButton, .33f, .075f, .67f, .145f);
+        }
+    }
+
+    static void Place(RectTransform rect, float x0, float y0, float x1, float y1)
+    {
+        rect.anchorMin = new Vector2(x0, y0); rect.anchorMax = new Vector2(x1, y1);
+        rect.offsetMin = rect.offsetMax = Vector2.zero; rect.localScale = Vector3.one;
+    }
 
     public void StartGame()
     {
+        if (isLoading) return;
+        isLoading = true;
+        Time.timeScale = 1f;
         StartCoroutine(IncarcaNivelul("ScenaJoc")); 
     }
 

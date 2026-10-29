@@ -19,7 +19,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (seTineApasat && weaponManager.isAutomatic)
+        if (Time.timeScale > 0 && seTineApasat && weaponManager != null && weaponManager.isAutomatic)
         {
             if (Time.time >= nextFireTime)
             {
@@ -31,6 +31,7 @@ public class PlayerShoot : MonoBehaviour
 
     public void StartShooting()
     {
+        if (!isActiveAndEnabled || Time.timeScale <= 0 || weaponManager == null) return;
         if (Time.time >= nextFireTime)
         {
             ExecutaTragere();
@@ -43,6 +44,8 @@ public class PlayerShoot : MonoBehaviour
     {
         seTineApasat = false;
     }
+
+    void OnDisable() { seTineApasat = false; }
 
     void ExecutaTragere()
     {
@@ -58,7 +61,8 @@ public class PlayerShoot : MonoBehaviour
         float volum = weaponManager.currentAudioVolume;
 
         // GLONT
-        Instantiate(glontPrefab, punctTragere.position, transform.rotation);
+        GameObject bullet = Instantiate(glontPrefab, punctTragere.position, transform.rotation);
+        if (bullet.TryGetComponent<BulletMove>(out var projectile)) projectile.damage = weaponManager.currentDamage;
 
         // MUZZLE FLASH
         if (efect != null)

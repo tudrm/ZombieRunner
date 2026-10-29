@@ -10053,19 +10053,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1439514228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1745809113}
-        m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
-        m_MethodName: Trage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1439514228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11553,20 +11541,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponManager
   soldierAnimator: {fileID: 1622056683}
+  catalog: {fileID: 11400000, guid: b8742103c3c40344e8d0800921c95338, type: 2}
   globalPistolVolume: 1
   globalSmgVolume: 0.4
   globalRifleVolume: 0.3
   pistolObject: {fileID: 942877544}
-  pistolMuzzle: {fileID: 504971829}
-  pistolFlashPrefab: {fileID: 100006, guid: 0661276422528d74d8c9894abad93242, type: 3}
-  pistolSound: {fileID: 8300000, guid: b8088a59c226e92408fbbd6e01c9a08b, type: 3}
   smgObject: {fileID: 1704941414}
-  smgMuzzle: {fileID: 1659235836}
-  smgFlashPrefab: {fileID: 100006, guid: 7e9c50938e32351438a7df9ccad2f2a5, type: 3}
-  smgSound: {fileID: 8300000, guid: 0ada35ccea2acbf40ba75dad27813901, type: 3}
   rifleObject: {fileID: 1135447855}
+  pistolMuzzle: {fileID: 504971829}
+  smgMuzzle: {fileID: 1659235836}
   rifleMuzzle: {fileID: 1698247173}
+  pistolFlashPrefab: {fileID: 100006, guid: 0661276422528d74d8c9894abad93242, type: 3}
+  smgFlashPrefab: {fileID: 100006, guid: 7e9c50938e32351438a7df9ccad2f2a5, type: 3}
   rifleFlashPrefab: {fileID: 100002, guid: eb553b67921c92649ac7dbbc561e2047, type: 3}
+  pistolSound: {fileID: 8300000, guid: b8088a59c226e92408fbbd6e01c9a08b, type: 3}
+  smgSound: {fileID: 8300000, guid: 0ada35ccea2acbf40ba75dad27813901, type: 3}
   rifleSound: {fileID: 8300000, guid: fc2cf9240896a414190ed702a69e4990, type: 3}
   currentFirePoint: {fileID: 0}
   currentFlashPrefab: {fileID: 0}
@@ -11574,6 +11563,7 @@ MonoBehaviour:
   currentAudioVolume: 0
   currentFireRate: 0
   isAutomatic: 0
+  currentDamage: 25
 --- !u!1001 &1751620540
 PrefabInstance:
   m_ObjectHideFlags: 0

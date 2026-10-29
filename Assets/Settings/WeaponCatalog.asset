@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cd3a93095c05d40834a8c91c7874b9, type: 3}
+  m_Name: WeaponCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponCatalog
+  weapons:
+  - id: pistol_A
+    displayName: SIDEARM
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 1
+    price: 0
+    damage: 25
+    roundsPerMinute: 180
+    modelPrefab: {fileID: 2225440571541060868, guid: 3d475f10d076c444d8584c1be775ba38, type: 3}
+    thumbnail: {fileID: 21300000, guid: 76f0a9f2c247eda40a8972b2513da070, type: 3}
+  - id: pistol_B
+    displayName: SENTINEL
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 2
+    price: 750
+    damage: 28
+    roundsPerMinute: 200
+    modelPrefab: {fileID: 7173815278906741782, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
+    thumbnail: {fileID: 21300000, guid: 4513295bec52d914384e35ca0744fb41, type: 3}
+  - id: pistol_C
+    displayName: OUTRIDER
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 3
+    price: 1500
+    damage: 32
+    roundsPerMinute: 220
+    modelPrefab: {fileID: 7779035596426449466, guid: 436d84b39ebbb99449cf0c0ed23b24a5, type: 3}
+    thumbnail: {fileID: 21300000, guid: 81827354f2709554b87821127e925cba, type: 3}
+  - id: pistol_D
+    displayName: VANGUARD
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 4
+    price: 2600
+    damage: 36
+    roundsPerMinute: 240
+    modelPrefab: {fileID: 4920507860935382577, guid: 5f04650d3064895489cdb8f95e907c1b, type: 3}
+    thumbnail: {fileID: 21300000, guid: 82d0a8fe2e29b314d8a2c2ea149db9f2, type: 3}
+  - id: pistol_E
+    displayName: IRONCLAD
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 5
+    price: 4200
+    damage: 40
+    roundsPerMinute: 260
+    modelPrefab: {fileID: 2804036681021304787, guid: 8147cbc638990a74995cb3f8161c7edd, type: 3}
+    thumbnail: {fileID: 21300000, guid: 1a7f44f9290496244a0d316c331cfa4c, type: 3}
+  - id: pistol_F
+    displayName: WARDEN
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 6
+    price: 6500
+    damage: 46
+    roundsPerMinute: 280
+    modelPrefab: {fileID: 5789703485367661094, guid: 9c5ac491f264de345bd534069d892997, type: 3}
+    thumbnail: {fileID: 21300000, guid: 694d631c93943f8409be07ac2eea57b9, type: 3}
+  - id: pistol_G
+    displayName: REVENANT
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 7
+    price: 9500
+    damage: 52
+    roundsPerMinute: 300
+    modelPrefab: {fileID: 6971496768782505918, guid: dfc4d87131163204eb41e8626f81e196, type: 3}
+    thumbnail: {fileID: 21300000, guid: a70c3a74ef0f51d428195194dc447566, type: 3}
+  - id: pistol_H
+    displayName: EXECUTIONER
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 8
+    price: 14000
+    damage: 60
+    roundsPerMinute: 330
+    modelPrefab: {fileID: 814340701941695064, guid: 65d4bfa286fab474b943deee58acedb1, type: 3}
+    thumbnail: {fileID: 21300000, guid: bfed321a6ab14444f857e4daf438acf7, type: 3}
+  - id: pistol_I
+    displayName: NIGHTFALL
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 9
+    price: 20000
+    damage: 70
+    roundsPerMinute: 360
+    modelPrefab: {fileID: 1039969711115970564, guid: 0fba1bca4a50c20469807a90556f21dd, type: 3}
+    thumbnail: {fileID: 21300000, guid: b1a78a728d331c443bd0cf3aada08220, type: 3}
+  - id: pistol_J
+    displayName: LAST WORD
+    description: Precision in your hands. Every tap counts.
+    category: 0
+    tier: 10
+    price: 30000
+    damage: 85
+    roundsPerMinute: 400
+    modelPrefab: {fileID: 88317814946030486, guid: ea1ad08618ee1794b816f11a5aebd849, type: 3}
+    thumbnail: {fileID: 21300000, guid: a5fbb64bc17dec249bcedd5ea81f4aa6, type: 3}
+  - id: smg_F
+    displayName: SCAVENGER
+    description: Close-range pressure. Hold the trigger and clear the street.
+    category: 1
+    tier: 1
+    price: 1200
+    damage: 18
+    roundsPerMinute: 420
+    modelPrefab: {fileID: 8712849249800013046, guid: 457a5e0e81592b046a8717a070ea6770, type: 3}
+    thumbnail: {fileID: 21300000, guid: 2ce75006da022784c90b4fe009acf606, type: 3}
+  - id: smg_G
+    displayName: HORNET
+    description: Close-range pressure. Hold the trigger and clear the street.
+    category: 1
+    tier: 2
+    price: 3200
+    damage: 23
+    roundsPerMinute: 480
+    modelPrefab: {fileID: 5943543978086211253, guid: 6289d31ac64ccb743a9e2886f210a9b9, type: 3}
+    thumbnail: {fileID: 21300000, guid: 00428da9aedf773499ded0305ccc579b, type: 3}
+  - id: smg_H
+    displayName: RAVAGER
+    description: Close-range pressure. Hold the trigger and clear the street.
+    category: 1
+    tier: 3
+    price: 6500
+    damage: 29
+    roundsPerMinute: 560
+    modelPrefab: {fileID: 4379096843496564603, guid: 06e437090cb38a44a82a778b5475e418, type: 3}
+    thumbnail: {fileID: 21300000, guid: a6b9ffc63d518bc4aa4bb98251764b03, type: 3}
+  - id: smg_I
+    displayName: GHOST
+    description: Close-range pressure. Hold the trigger and clear the street.
+    category: 1
+    tier: 4
+    price: 12000
+    damage: 36
+    roundsPerMinute: 650
+    modelPrefab: {fileID: 3386663550301400852, guid: 096cb921cb878724db474ea540032640, type: 3}
+    thumbnail: {fileID: 21300000, guid: bf3bef7e601db5b469b7a4786b38777c, type: 3}
+  - id: smg_J
+    displayName: TEMPEST
+    description: Close-range pressure. Hold the trigger and clear the street.
+    category: 1
+    tier: 5
+    price: 21000
+    damage: 44
+    roundsPerMinute: 750
+    modelPrefab: {fileID: 7660624483632653708, guid: d7791594d53f2a9489a02a65171f508c, type: 3}
+    thumbnail: {fileID: 21300000, guid: e947bc86f81765f4a87daa6376f8f2ce, type: 3}
+  - id: ar_L
+    displayName: RANGER
+    description: Heavy firepower for the waves that refuse to stop.
+    category: 2
+    tier: 1
+    price: 2200
+    damage: 34
+    roundsPerMinute: 300
+    modelPrefab: {fileID: 639178805255782959, guid: 8095ef38caf3d1f459ef19d91b36d73e, type: 3}
+    thumbnail: {fileID: 21300000, guid: b00f315edc223304fb7413af9facf4c8, type: 3}
+  - id: ar_M
+    displayName: MARAUDER
+    description: Heavy firepower for the waves that refuse to stop.
+    category: 2
+    tier: 2
+    price: 5000
+    damage: 43
+    roundsPerMinute: 360
+    modelPrefab: {fileID: 7907567775967570144, guid: b457496d9a25c3849a4673c6042fbac1, type: 3}
+    thumbnail: {fileID: 21300000, guid: 1183e4401877264499e19febd752d541, type: 3}
+  - id: ar_N
+    displayName: RECLAIMER
+    description: Heavy firepower for the waves that refuse to stop.
+    category: 2
+    tier: 3
+    price: 10000
+    damage: 54
+    roundsPerMinute: 420
+    modelPrefab: {fileID: 3205656361919459485, guid: 9a6080cd2e05bd045be9af4ce6467c2e, type: 3}
+    thumbnail: {fileID: 21300000, guid: cb6276463140c5544b90f145fd124064, type: 3}
+  - id: ar_O
+    displayName: WARLORD
+    description: Heavy firepower for the waves that refuse to stop.
+    category: 2
+    tier: 4
+    price: 18000
+    damage: 67
+    roundsPerMinute: 500
+    modelPrefab: {fileID: 8609571142284620566, guid: c3e82067129c1184bb25997b1b2c3380, type: 3}
+    thumbnail: {fileID: 21300000, guid: 603a8dc5a420b0a4c9e803157ecfc171, type: 3}
+  - id: ar_P
+    displayName: OBLIVION
+    description: Heavy firepower for the waves that refuse to stop.
+    category: 2
+    tier: 5
+    price: 32000
+    damage: 82
+    roundsPerMinute: 600
+    modelPrefab: {fileID: 7916494374254889978, guid: ce45511be579fad46b4d79d52b5397f8, type: 3}
+    thumbnail: {fileID: 21300000, guid: c5a055e45efa0604399c1f833e2759a5, type: 3}

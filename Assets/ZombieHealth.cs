@@ -65,7 +65,8 @@ public class ZombieHealth : MonoBehaviour
             col.enabled = false;
         }
 
-        ScoreManager.instance.AddScore(10);   
+        if (ScoreManager.instance != null) ScoreManager.instance.AddScore(10);
+        WeaponCatalog.AwardCoins(25);
 
         Destroy(gameObject, 3f);
     }

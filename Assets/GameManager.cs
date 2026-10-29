@@ -10,14 +10,20 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public TextMeshProUGUI scorFinalText;
     public TextMeshProUGUI highText;
+    private bool gameOver;
 
     void Awake()
     {
         instance = this;
     }
 
+    void OnApplicationPause(bool paused) { if (paused) PlayerPrefs.Save(); }
+
     public void DeclanseazaGameOver()
     {
+        if (gameOver) return;
+        gameOver = true;
+        PlayerPrefs.Save();
         // 1. OPRIM TIMPUL (CRUCIAL: Asta previne restartul fantoma!)
         Time.timeScale = 0; 
 
