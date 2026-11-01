@@ -1,329 +1,243 @@
 #if UNITY_EDITOR
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEditor;
 using UnityEditor.Events;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
-using Object = UnityEngine.Object;
+using Object=UnityEngine.Object;
 
-// Authoring tools edit the two existing scenes. No runtime-generated replacement menu.
 public static class ShopAuthoring
 {
-    const string CatalogPath = "Assets/Settings/WeaponCatalog.asset";
-    static TMP_FontAsset font;
-    static readonly Color White = new Color(.92f, .93f, .89f);
-    static readonly Color Muted = new Color(.57f, .63f, .65f);
-    static readonly Color Panel = new Color(.035f, .05f, .055f, .95f);
-    static readonly Color Red = new Color(.76f, .18f, .16f);
-
+    static TMP_FontAsset body, heading;
+    static Color Ink=new Color(.075f,.09f,.08f), Panel=new Color(.10f,.115f,.105f), White=new Color(.91f,.91f,.85f), Muted=new Color(.59f,.62f,.56f), Accent=new Color(.67f,.29f,.23f);
+    const string CatalogPath="Assets/Settings/WeaponCatalog.asset";
     [MenuItem("Tools/ZombieRunner/Build Shop in Existing Scenes")]
     public static void Setup()
     {
-        if (EditorApplication.isPlaying) throw new InvalidOperationException("Stop Play Mode first.");
-        if (EditorSceneManager.GetActiveScene().isDirty) throw new InvalidOperationException("Save current scene before setup.");
-        Directory.CreateDirectory("Assets/Settings/WeaponThumbnails");
-        AssetDatabase.Refresh();
-        var catalog = BuildCatalog();
-        var menu = EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
-        font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset");
-        if (font == null) font = TMP_Settings.defaultFontAsset;
-        GameObject canvas = Find("Canvas");
-        var manager = Find("ShopManager").GetComponent<ShopManager>();
-        manager.catalog = catalog;
-        var panel = Find("Panel_Shop");
-        manager.shopPanel = panel;
-        panel.SetActive(true);
-        var panelRect = (RectTransform)panel.transform;
-        panelRect.localScale = Vector3.one;
-        Rect(panelRect, 0, 0, 1, 1);
-        var bg = panel.GetComponent<Image>();
-        var art = panel.transform.Find("ShopBackground") as RectTransform;
-        if (art == null) art = Box("ShopBackground", panel.transform, Color.white);
-        art.SetAsFirstSibling();
-        var artImage = art.GetComponent<Image>();
-        artImage.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Poze/PozaShop.png");
-        artImage.color = new Color(.28f, .31f, .31f);
-        artImage.raycastTarget = false;
-        var fit = art.GetComponent<AspectRatioFitter>();
-        if (fit == null) fit = art.gameObject.AddComponent<AspectRatioFitter>();
-        fit.aspectRatio = artImage.sprite.rect.width / artImage.sprite.rect.height;
-        fit.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
-        bg.sprite = null; bg.color = new Color(.025f,.035f,.04f);
-        // Reuse the existing category buttons, wallet and back button.
-        var oldTabs = new[] { Find("Btn_Category_Pistols"), Find("Btn_Category_SMGs"), Find("Btn_Category_Rifles") };
-        var back = Find("Btn_ExitToMenu");
-        var coinsIcon = Find("Icon_Coins");
-        var gemsIcon = Find("Icon_Gems");
-        var coins = manager.textMonede;
-        var gems = manager.textGemuri;
-        foreach (var tab in oldTabs) tab.transform.SetParent(panel.transform, false);
-        back.transform.SetParent(panel.transform, false);
-        coins.transform.SetParent(panel.transform, false);
-        gems.transform.SetParent(panel.transform, false);
-        coinsIcon.transform.SetParent(panel.transform, false);
-        gemsIcon.transform.SetParent(panel.transform, false);
-        var oldShelf = panel.transform.Find("Raft_Categorii");
-        if (oldShelf != null) oldShelf.gameObject.SetActive(false);
-        var previous = panel.transform.Find("ArmorySafeArea");
-        if (previous != null) Object.DestroyImmediate(previous.gameObject);
-        manager.safeArea = Node("ArmorySafeArea", panel.transform);
-        Rect(manager.safeArea, 0, 0, 1, 1);
-        manager.header = Box("Header", manager.safeArea, Panel);
-        manager.categories = Node("Categories", manager.safeArea);
-        manager.collection = Box("Collection", manager.safeArea, Panel);
-        manager.details = Box("WeaponDetails", manager.safeArea, Panel);
-        manager.actionBar = Box("ActionBar", manager.safeArea, Panel);
-        Rect(manager.header, .035f,.89f,.965f,.985f);
-        Rect(manager.categories,.035f,.815f,.965f,.875f);
-        Rect(manager.collection,.035f,.115f,.965f,.385f);
-        Rect(manager.details,.035f,.405f,.965f,.795f);
-        Rect(manager.actionBar,.035f,.025f,.965f,.095f);
-
-        Text("Eyebrow", manager.header, "ZOMBIE RUNNER  /  FIELD SUPPLY", 20, Muted, .025f,.72f,.62f,.95f);
-        Text("Heading", manager.header, "ARMORY", 58, White, .025f,.2f,.57f,.75f, FontStyles.Bold);
-        manager.equippedText = Text("Equipped", manager.header, "LOADOUT  /  SIDEARM", 19, Muted, .025f,.02f,.62f,.23f);
-        Reparent(coinsIcon, manager.header,.64f,.57f,.71f,.88f);
-        Reparent(gemsIcon, manager.header,.64f,.12f,.71f,.43f);
-        coinsIcon.GetComponent<Image>().preserveAspect = true;
-        gemsIcon.GetComponent<Image>().preserveAspect = true;
-        Reparent(coins.gameObject, manager.header,.72f,.57f,.92f,.88f);
-        Reparent(gems.gameObject, manager.header,.72f,.12f,.92f,.43f);
-        StyleText(coins, 28, new Color(.96f,.79f,.42f));
-        StyleText(gems, 26, new Color(.62f,.81f,.95f));
-        back.transform.SetParent(manager.header, false);
-        Rect((RectTransform)back.transform,.935f,.2f,.995f,.8f);
-        ButtonStyle(back, new Color(.16f,.19f,.2f), "X", 30);
-        SetClick(back.GetComponent<Button>(), manager.CloseShop);
-
-        manager.categoryButtons = new Button[3];
-        string[] labels = { "PISTOLS  /  10", "SMGs  /  05", "RIFLES  /  05" };
-        for (int i=0;i<3;i++)
-        {
-            Reparent(oldTabs[i],manager.categories,i/3f+.006f,0,(i+1)/3f-.006f,1);
-            ButtonStyle(oldTabs[i], i==0?Red:new Color(.1f,.13f,.14f), labels[i], 25);
-            manager.categoryButtons[i]=oldTabs[i].GetComponent<Button>();
-            ClearClick(manager.categoryButtons[i]);
-        }
-        manager.collectionText=Text("CollectionTitle",manager.collection,"YOUR ARSENAL",22,Muted,.03f,.9f,.97f,.99f);
-        var scrollRoot=Node("WeaponScroll",manager.collection);
-        Rect(scrollRoot,.02f,.025f,.98f,.87f);
-        var scroll=scrollRoot.gameObject.AddComponent<ScrollRect>();
-        var viewport=Box("Viewport",scrollRoot,new Color(0,0,0,0));
-        Rect(viewport,0,0,1,1);
-        viewport.gameObject.AddComponent<RectMask2D>();
-        var content=Node("WeaponCards",viewport);
-        content.anchorMin=new Vector2(0,1); content.anchorMax=Vector2.one; content.pivot=new Vector2(.5f,1);
-        content.anchoredPosition=Vector2.zero; content.sizeDelta=Vector2.zero;
-        var grid=content.gameObject.AddComponent<GridLayoutGroup>();
-        grid.cellSize=new Vector2(450,160);grid.spacing=new Vector2(12,12);grid.padding=new RectOffset(8,8,8,8);
-        grid.constraint=GridLayoutGroup.Constraint.FixedColumnCount;grid.constraintCount=2;
-        var fitter=content.gameObject.AddComponent<ContentSizeFitter>();fitter.verticalFit=ContentSizeFitter.FitMode.PreferredSize;
-        scroll.viewport=viewport;scroll.content=content;scroll.horizontal=false;scroll.vertical=true;
-        scroll.movementType=ScrollRect.MovementType.Clamped;scroll.scrollSensitivity=35;
-        manager.weaponScroll=scroll;manager.cardContent=content;manager.cardGrid=grid;
-        var card=Box("WeaponCardTemplate",content,new Color(.075f,.095f,.1f));
-        card.gameObject.AddComponent<Button>();
-        var thumb=Box("Thumbnail",card,Color.white).GetComponent<Image>();
-        Rect(thumb.rectTransform,.01f,.18f,.4f,.95f);thumb.raycastTarget=false;
-        Text("Name",card,"SIDEARM",27,White,.43f,.57f,.97f,.92f,FontStyles.Bold);
-        Text("Stats",card,"25 DMG / 180 RPM",22,Muted,.43f,.32f,.98f,.58f);
-        Text("Ownership",card,"OWNED",20,new Color(.94f,.76f,.41f),.43f,.06f,.98f,.32f);
-        card.gameObject.SetActive(false);manager.cardTemplate=card.gameObject;
-
-        manager.tierText=Text("Tier",manager.details,"PISTOL / TIER 01 / SEMI-AUTO",20,new Color(.85f,.45f,.4f),.04f,.94f,.96f,.995f);
-        var display=Node("ModelPreview",manager.details).gameObject.AddComponent<RawImage>();
-        Rect(display.rectTransform,.02f,.43f,.98f,.93f);
-        display.color=Color.white;
-        var preview=display.gameObject.AddComponent<WeaponPreview>();preview.display=display;manager.preview=preview;
-        Text("PreviewHint",display.transform,"360°  /  DRAG TO ROTATE",22,Muted,.04f,.02f,.97f,.12f);
-        manager.titleText=Text("WeaponName",manager.details,"SIDEARM",38,White,.04f,.355f,.96f,.435f,FontStyles.Bold);
-        manager.descriptionText=Text("Description",manager.details,"A reliable companion for your first runs.",24,Muted,.04f,.29f,.96f,.355f);
-        Stat(manager.details,0,"DAMAGE / HIT",out manager.damageText,out manager.damageCompare,out manager.damageFill);
-        Stat(manager.details,1,"FIRE RATE / RPM",out manager.rateText,out manager.rateCompare,out manager.rateFill);
-        Stat(manager.details,2,"DAMAGE / SEC",out manager.dpsText,out manager.dpsCompare,out manager.dpsFill);
-        manager.statusText=Text("Status",manager.details,"Drag to inspect. Stats compared with your equipped weapon.",22,Muted,.04f,.015f,.96f,.075f);
-        manager.priceText=Text("Price",manager.actionBar,"OWNED / READY TO DEPLOY",26,new Color(.94f,.76f,.41f),.03f,.46f,.49f,.88f,FontStyles.Bold);
-        Text("EarnHint",manager.actionBar,"EARN 25 COINS PER ZOMBIE",22,Muted,.03f,.12f,.49f,.45f);
-        var buy=Box("PurchaseOrEquip",manager.actionBar,Red);
-        Rect(buy,.52f,.14f,.975f,.86f);
-        manager.purchaseButton=buy.gameObject.AddComponent<Button>();
-        manager.actionText=Text("Label",buy,"EQUIPPED",28,White,.02f,.1f,.98f,.9f,FontStyles.Bold);
-        manager.actionText.alignment=TextAlignmentOptions.Center;
-
-        SetClick(Find("Btn_Shop").GetComponent<Button>(),manager.OpenShop);
-        SetClick(Find("Btn_Locker").GetComponent<Button>(),manager.OpenShop);
-        var main = canvas.GetComponent<MainMenuManager>();
-        var controls = canvas.transform.Find("MenuSafeArea") as RectTransform;
-        if (controls == null) controls = Node("MenuSafeArea",canvas.transform);
-        main.menuSafeArea = controls;
-        Rect(controls,0,0,1,1);
-        main.menuArtwork = (RectTransform)Find("MainMenu").transform;
-        main.menuArtwork.GetComponent<Image>().preserveAspect = true;
-        main.playButton = (RectTransform)Find("Btn_Play").transform;
-        main.shopButton = (RectTransform)Find("Btn_Shop").transform;
-        main.lockerButton = (RectTransform)Find("Btn_Locker").transform;
-        main.settingsButton = (RectTransform)Find("Btn_Settings").transform;
-        foreach (var button in new[] {main.playButton, main.shopButton, main.lockerButton, main.settingsButton})
-        { button.SetParent(controls,false); button.GetComponent<Image>().preserveAspect = true; }
-        Rect(main.menuArtwork,0,0,1,1);
-        Rect(main.playButton,.18f,.255f,.82f,.33f);
-        Rect(main.shopButton,.18f,.165f,.49f,.235f);
-        Rect(main.lockerButton,.51f,.165f,.82f,.235f);
-        Rect(main.settingsButton,.33f,.075f,.67f,.145f);
-        panel.transform.SetAsLastSibling();
-        main.loadingPanel.transform.SetAsLastSibling();
-        var menuCamera = Find("Main Camera").GetComponent<Camera>();
-        menuCamera.clearFlags = CameraClearFlags.SolidColor;
-        menuCamera.backgroundColor = new Color(.025f,.035f,.04f);
-        EditorUtility.SetDirty(main);
-        // Preserve the original menu and loading artwork; shop opens through its existing buttons.
-        Find("Panel_Loading").SetActive(false);
-        panel.SetActive(false);
-        EditorUtility.SetDirty(manager);
-        EditorSceneManager.SaveScene(menu);
-
-        var game=EditorSceneManager.OpenScene("Assets/Scenes/ScenaJoc.unity");
-        var weaponManager=Object.FindFirstObjectByType<WeaponManager>();
-        if (weaponManager==null)throw new InvalidOperationException("Player WeaponManager missing.");
-        weaponManager.catalog=catalog;
-        ClearClick(Find("ButonTrage").GetComponent<Button>());
-        EditorUtility.SetDirty(weaponManager);
-        EditorSceneManager.SaveScene(game);
-        EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
-        AssetDatabase.SaveAssets();
-        Debug.Log("ZombieRunner Shop ready: 20 weapons, 3 categories, existing scenes updated.");
-    }
-
-    static WeaponCatalog BuildCatalog()
-    {
+        if(EditorApplication.isPlaying || EditorSceneManager.GetActiveScene().isDirty)throw new Exception("Stop Play Mode and save the active scene first.");
+        body=AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset");
+        heading=CreateHeading();
+        var mixer=CreateMixer();
         var catalog=AssetDatabase.LoadAssetAtPath<WeaponCatalog>(CatalogPath);
-        // Keep Inspector balancing and existing references when rebuilding only the UI.
-        if (catalog != null && catalog.weapons.Length > 0) return catalog;
-        if(catalog==null){catalog=ScriptableObject.CreateInstance<WeaponCatalog>();AssetDatabase.CreateAsset(catalog,CatalogPath);}
-        var all=new List<WeaponDefinition>();
-        string[][] names={new[]{"Sidearm","Sentinel","Outrider","Vanguard","Ironclad","Warden","Revenant","Executioner","Nightfall","Last Word"},
-            new[]{"Scavenger","Hornet","Ravager","Ghost","Tempest"},
-            new[]{"Ranger","Marauder","Reclaimer","Warlord","Oblivion"}};
-        int[][] damage={new[]{25,28,32,36,40,46,52,60,70,85},new[]{18,23,29,36,44},new[]{34,43,54,67,82}};
-        int[][] rpm={new[]{180,200,220,240,260,280,300,330,360,400},new[]{420,480,560,650,750},new[]{300,360,420,500,600}};
-        int[][] prices={new[]{0,750,1500,2600,4200,6500,9500,14000,20000,30000},new[]{1200,3200,6500,12000,21000},new[]{2200,5000,10000,18000,32000}};
-        string[] dirs={"Assets/Low Poly Pistol Weapon Pack 1/Prefabs/Weapons/","Assets/Low Poly SMG Weapon Pack 2/Prefabs/Weapons/","Assets/Low Poly AR Weapon Pack 3/Prefabs/Weapons/"};
-        string[] prefixes={"Pistol_","SMG_","AR_"};char[] starts={'A','F','L'};
-        for(int category=0;category<3;category++)
-        for(int i=0;i<names[category].Length;i++)
+        foreach(var w in catalog.weapons)if(w.gemPrice==0 && w.price>0)w.gemPrice=Mathf.CeilToInt(w.price/25f);
+        EditorUtility.SetDirty(catalog);
+        var store=AssetDatabase.LoadAssetAtPath<GemStoreCatalog>("Assets/Settings/GemStore.asset");
+        if(store==null)
         {
-            string id=prefixes[category].ToLowerInvariant()+(char)(starts[category]+i);
-            var w=new WeaponDefinition{id=id,displayName=names[category][i].ToUpperInvariant(),category=(WeaponCategory)category,tier=i+1,
-                damage=damage[category][i],roundsPerMinute=rpm[category][i],price=prices[category][i],
-                description=category==0?"Precision in your hands. Every tap counts.":category==1?"Close-range pressure. Hold the trigger and clear the street.":"Heavy firepower for the waves that refuse to stop.",
-                modelPrefab=AssetDatabase.LoadAssetAtPath<GameObject>(dirs[category]+prefixes[category]+(char)(starts[category]+i)+".prefab")};
-            if(w.modelPrefab==null)throw new Exception("Missing model "+id);
-            w.thumbnail=Thumbnail(w);
-            all.Add(w);
+            store=ScriptableObject.CreateInstance<GemStoreCatalog>();
+            int[] amounts={200,550,1200,7000,16000}, prices={2,5,10,50,100};
+            string[] names={"POCKET STASH","SUPPLY POUCH","SURVIVOR PACK","WAR CHEST","VAULT"};
+            store.offers=Enumerable.Range(0,5).Select(i=>new GemOffer{productId="zombierunner.gems."+amounts[i],gems=amounts[i],euroPrice=prices[i],label=names[i]}).ToArray();
+            AssetDatabase.CreateAsset(store,"Assets/Settings/GemStore.asset");
         }
-        catalog.weapons=all.ToArray();EditorUtility.SetDirty(catalog);AssetDatabase.SaveAssets();
-        return catalog;
-    }
-
-    static Sprite Thumbnail(WeaponDefinition w)
-    {
-        string path="Assets/Settings/WeaponThumbnails/"+w.id+".png";
-        var preview=new PreviewRenderUtility();
-        try
+        var scene=EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
+        var shop=Object.FindFirstObjectByType<ShopManager>();shop.catalog=catalog;shop.gemStore=store;
+        var canvas=Find("Canvas");var main=canvas.GetComponent<MainMenuManager>();
+        var panel=shop.shopPanel;panel.SetActive(true);
+        var tabs=new[]{Find("Btn_Category_Pistols"),Find("Btn_Category_SMGs"),Find("Btn_Category_Rifles")};
+        var back=Find("Btn_ExitToMenu");var coin=Find("Icon_Coins");var gem=Find("Icon_Gems");
+        foreach(var go in tabs.Concat(new[]{back,coin,gem,shop.textMonede.gameObject,shop.textGemuri.gameObject}))go.transform.SetParent(panel.transform,false);
+        var previous=panel.transform.Find("ArmorySafeArea");if(previous!=null)Object.DestroyImmediate(previous.gameObject);
+        panel.GetComponent<Image>().color=new Color(.045f,.055f,.047f);
+        var art=panel.transform.Find("ShopBackground");
+        if(art!=null){var image=art.GetComponent<Image>();image.sprite=AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Poze/MeniuZombieRunner.png");image.color=new Color(.14f,.16f,.13f,.4f);}
+        shop.safeArea=Node("ArmorySafeArea",panel.transform);Stretch(shop.safeArea);
+        shop.header=Box("Header",shop.safeArea,new Color(.045f,.055f,.047f,.96f));
+        Label("Title",shop.header,"SHOP",48,White,0,.05f,.32f,.95f,true);
+        var coinButton=Button("Coins",shop.header,new Color(.19f,.18f,.13f));Rect(coinButton.transform,.43f,.2f,.655f,.85f);Click(coinButton,shop.ShowGems);
+        var gemButton=Button("Gems",shop.header,new Color(.23f,.12f,.115f));Rect(gemButton.transform,.67f,.2f,.895f,.85f);Click(gemButton,shop.ShowGems);
+        Wallet(coin,shop.textMonede,coinButton.transform);Wallet(gem,shop.textGemuri,gemButton.transform);
+        back.transform.SetParent(shop.header,false);Rect(back.transform,.915f,.2f,1,.85f);Style(back.GetComponent<Button>(),new Color(.15f,.17f,.145f));
+        var oldLabel=back.transform.Find("Label");if(oldLabel!=null)Object.DestroyImmediate(oldLabel.gameObject);
+        Label("Label",back.transform,"X",26,White,0,0,1,1,false,TextAlignmentOptions.Center);Click(back.GetComponent<Button>(),shop.CloseShop);
+        var rule=Box("Rule",shop.header,new Color(.25f,.27f,.23f));Rect(rule,0,0,1,.012f);
+        var scrollRoot=Node("ShopScroll",shop.safeArea);Stretch(scrollRoot);scrollRoot.SetAsFirstSibling();
+        var viewport=Box("Viewport",scrollRoot,Color.clear);viewport.gameObject.AddComponent<RectMask2D>();
+        var content=Node("Page",viewport);content.anchorMin=new Vector2(0,1);content.anchorMax=Vector2.one;content.pivot=new Vector2(.5f,1);content.anchoredPosition=Vector2.zero;
+        shop.pageContent=content;
+        var scroll=scrollRoot.gameObject.AddComponent<ScrollRect>();scroll.viewport=viewport;scroll.content=content;scroll.horizontal=false;scroll.vertical=true;scroll.movementType=ScrollRect.MovementType.Clamped;scroll.scrollSensitivity=55;scroll.decelerationRate=.09f;shop.weaponScroll=scroll;
+        shop.categories=Node("Categories",content);shop.categoryButtons=new Button[3];
+        for(int i=0;i<3;i++)
         {
-            preview.BeginStaticPreview(new Rect(0,0,512,256));
-            var model=Object.Instantiate(w.modelPrefab);
-            preview.AddSingleGO(model);
-            model.transform.position=Vector3.zero;model.transform.rotation=Quaternion.Euler(-12,-65,0);
-            var renderers=model.GetComponentsInChildren<Renderer>();
-            Bounds b=renderers[0].bounds;foreach(var r in renderers)b.Encapsulate(r.bounds);
-            preview.camera.orthographic=true;
-            preview.camera.orthographicSize=Mathf.Max(b.extents.y,b.extents.x/2)*1.3f;
-            preview.camera.nearClipPlane=.01f;preview.camera.farClipPlane=30;
-            preview.camera.transform.position=b.center+Vector3.back*8;preview.camera.transform.rotation=Quaternion.identity;
-            preview.camera.clearFlags=CameraClearFlags.SolidColor;preview.camera.backgroundColor=new Color(.075f,.095f,.1f,0);
-            preview.lights[0].intensity=2.3f;preview.lights[0].transform.rotation=Quaternion.Euler(35,-35,0);
-            preview.lights[1].intensity=1.6f;preview.lights[1].transform.rotation=Quaternion.Euler(20,145,0);
-            preview.ambientColor=new Color(.35f,.35f,.35f);
-            preview.Render(true);
-            var tex=preview.EndStaticPreview();
-            File.WriteAllBytes(path,tex.EncodeToPNG());Object.DestroyImmediate(tex);
+            tabs[i].transform.SetParent(shop.categories,false);Rect(tabs[i].transform,i/3f+.004f,0,(i+1)/3f-.004f,1);
+            var btn=tabs[i].GetComponent<Button>();Style(btn,Panel);btn.onClick=new Button.ButtonClickedEvent();
+            foreach(Transform child in tabs[i].transform.Cast<Transform>().ToArray())Object.DestroyImmediate(child.gameObject);
+            Label("Label",btn.transform,new[]{"PISTOLS","SMGs","RIFLES"}[i],25,White,0,0,1,1,false,TextAlignmentOptions.Center);
+            var line=Box("Line",btn.transform,Accent);Rect(line,.2f,0,.8f,.045f);shop.categoryButtons[i]=btn;
         }
-        finally {preview.Cleanup();}
-        AssetDatabase.ImportAsset(path);
-        var importer=(TextureImporter)AssetImporter.GetAtPath(path);importer.textureType=TextureImporterType.Sprite;
-        importer.spriteImportMode=SpriteImportMode.Single;importer.alphaIsTransparency=true;importer.mipmapEnabled=false;importer.maxTextureSize=512;
-        importer.SaveAndReimport();
-        return AssetDatabase.LoadAssetAtPath<Sprite>(path);
+        shop.details=Box("SelectedWeapon",content,new Color(.09f,.105f,.092f,.98f));
+        shop.titleText=Label("WeaponName",shop.details,"OUTRIDER",42,White,.04f,.87f,.96f,.98f,true);
+        shop.tierText=Label("Tier",shop.details,"SEMI-AUTO / TIER 03",19,Muted,.04f,.82f,.96f,.88f);
+        var display=Node("ModelPreview",shop.details).gameObject.AddComponent<RawImage>();Rect(display.transform,.03f,.39f,.97f,.81f);
+        var preview=display.gameObject.AddComponent<WeaponPreview>();preview.display=display;shop.preview=preview;
+        Label("RotateHint",display.transform,"DRAG TO ROTATE",17,Muted,.02f,0,.98f,.1f,false,TextAlignmentOptions.Right);
+        Stat(shop.details,0,"DAMAGE",out shop.damageText,out shop.damageCompare,out shop.damageFill);
+        Stat(shop.details,1,"FIRE RATE",out shop.rateText,out shop.rateCompare,out shop.rateFill);
+        Stat(shop.details,2,"DPS",out shop.dpsText,out shop.dpsCompare,out shop.dpsFill);
+        shop.actionBar=Node("Purchase",shop.details);
+        shop.priceText=Label("Caption",shop.actionBar,"UNLOCK WITH",17,Muted,0,.8f,1,1);
+        shop.purchaseButton=Button("BuyWithCoins",shop.actionBar,new Color(.44f,.37f,.23f));
+        shop.actionText=Label("Label",shop.purchaseButton.transform,"COINS",22,White,.02f,.05f,.98f,.95f,false,TextAlignmentOptions.Center);
+        shop.gemPurchaseButton=Button("BuyWithGems",shop.actionBar,Accent);
+        shop.gemActionText=Label("Label",shop.gemPurchaseButton.transform,"GEMS",22,White,.02f,.05f,.98f,.95f,false,TextAlignmentOptions.Center);
+        shop.descriptionText=Label("PaymentHint",shop.actionBar,"",16,Muted,0,0,1,.18f);
+        shop.statusText=Label("Status",shop.details,"",19,new Color(.72f,.8f,.62f),.04f,.005f,.96f,.055f);
+        shop.equippedText=Label("Loadout",shop.safeArea,"",18,Muted,0,0,0,0);shop.equippedText.gameObject.SetActive(false);
+        shop.collection=Node("Weapons",content);
+        shop.collectionText=Label("CollectionTitle",shop.collection,"WEAPONS",23,White,0,0,1,1);
+        ShopManager.Top(shop.collectionText.rectTransform,0,0,600,32);
+        shop.cardContent=Node("Cards",shop.collection);
+        var grid=shop.cardContent.gameObject.AddComponent<GridLayoutGroup>();grid.spacing=new Vector2(12,12);grid.constraint=GridLayoutGroup.Constraint.FixedColumnCount;shop.cardGrid=grid;
+        var card=Button("WeaponCardTemplate",shop.cardContent,Panel);
+        var thumb=Box("Thumbnail",card.transform,Color.white).GetComponent<Image>();Rect(thumb.transform,.08f,.37f,.92f,.94f);thumb.preserveAspect=true;thumb.raycastTarget=false;
+        Label("Name",card.transform,"SIDEARM",23,White,.06f,.19f,.94f,.37f);
+        Label("Ownership",card.transform,"750 C / 30 G",19,Muted,.06f,.02f,.94f,.19f);
+        var mark=Box("Selected",card.transform,Accent);Rect(mark,0,0,.012f,1);mark.GetComponent<Image>().raycastTarget=false;
+        shop.cardTemplate=card.gameObject;card.gameObject.SetActive(false);
+        shop.gemsSection=Node("GemStore",content);
+        var separator=Box("Rule",shop.gemsSection,new Color(.28f,.27f,.22f));ShopManager.Top(separator,0,0,900,1);separator.anchorMax=new Vector2(1,1);separator.sizeDelta=new Vector2(0,1);
+        var gemTitle=Label("Heading",shop.gemsSection,"GEMS",44,White,0,0,1,1,true);ShopManager.Top(gemTitle.rectTransform,0,20,600,50);
+        var subtitle=Label("Subtitle",shop.gemsSection,"Unlock weapons with red Gems.",21,Muted,0,0,1,1);ShopManager.Top(subtitle.rectTransform,0,68,650,28);
+        shop.gemCards=Node("Offers",shop.gemsSection);shop.gemGrid=shop.gemCards.gameObject.AddComponent<GridLayoutGroup>();shop.gemGrid.spacing=new Vector2(12,12);shop.gemGrid.constraint=GridLayoutGroup.Constraint.FixedColumnCount;
+        for(int i=0;i<store.offers.Length;i++)
+        {
+            int index=i;var offer=store.offers[i];var go=Button("Gems_"+offer.gems,shop.gemCards,new Color(.16f,.105f,.10f));
+            var icon=Box("Gem",go.transform,Color.white).GetComponent<Image>();icon.sprite=gem.GetComponent<Image>().sprite;icon.preserveAspect=true;icon.raycastTarget=false;Rect(icon.transform,.36f,.53f,.64f,.83f);
+            int bonus=Mathf.RoundToInt((offer.gems/(offer.euroPrice*100f)-1)*100);
+            Label("Pack",go.transform,bonus>0?"+"+bonus+"% BONUS":"GEMS",17,Muted,.04f,.86f,.96f,.98f,false,TextAlignmentOptions.Center);
+            Label("Amount",go.transform,offer.gems.ToString("N0"),36,White,.02f,.32f,.98f,.53f,false,TextAlignmentOptions.Center);
+            var price=Box("Price",go.transform,new Color(.32f,.15f,.13f));Rect(price,.06f,.055f,.94f,.28f);
+            var priceLabel=Label("Label",price,"€"+offer.euroPrice,24,White,0,0,1,1,false,TextAlignmentOptions.Center);
+            var handler=go.gameObject.AddComponent<GemOfferButton>();handler.shop=shop;handler.offerIndex=index;handler.priceLabel=priceLabel;
+            Click(go,handler.Purchase);
+        }
+        var foot=Label("Availability",shop.gemsSection,"Gem purchases will be available when the store opens.",19,Muted,0,0,1,.065f);foot.alignment=TextAlignmentOptions.Center;
+        BuildNotice(shop);
+        BuildSettings(canvas,main);
+        Click(Find("Btn_Shop").GetComponent<Button>(),shop.OpenShop);Click(Find("Btn_Locker").GetComponent<Button>(),shop.OpenShop);
+        panel.transform.SetAsLastSibling();main.loadingPanel.transform.SetAsLastSibling();
+        shop.Layout();panel.SetActive(false);EditorUtility.SetDirty(shop);EditorSceneManager.SaveScene(scene);
+        var game=EditorSceneManager.OpenScene("Assets/Scenes/ScenaJoc.unity");
+        var effects=mixer.FindMatchingGroups("Effects")[0];
+        foreach(var source in Object.FindObjectsByType<AudioSource>(FindObjectsInactive.Include,FindObjectsSortMode.None))if(source.outputAudioMixerGroup==null){source.outputAudioMixerGroup=effects;EditorUtility.SetDirty(source);}
+        EditorSceneManager.SaveScene(game);
+        RoutePrefabs(effects);
+        AssetDatabase.SaveAssets();EditorSceneManager.OpenScene("Assets/Scenes/MainMenu.unity");
+        Debug.Log("Shop upgrade saved: clean shop, dual currency, gem offers and audio settings.");
     }
-
-    static void Stat(Transform parent,int index,string label,out TextMeshProUGUI value,out TextMeshProUGUI compare,out Image fill)
+    static void Wallet(GameObject icon,TextMeshProUGUI amount,Transform parent)
     {
-        float left=.04f+index*.315f;
-        var box=Box("Stat_"+index,parent,new Color(.09f,.115f,.12f));
-        Rect(box,left,.085f,left+.295f,.28f);
-        Text("Label",box,label,22,Muted,.07f,.74f,.95f,.96f);
-        value=Text("Value",box,"25",38,White,.07f,.32f,.94f,.78f,FontStyles.Bold);
-        compare=Text("Compare",box,"EQUAL",19,Muted,.07f,.09f,.96f,.33f);
-        var bar=Box("Track",box,new Color(.18f,.21f,.22f));Rect(bar,.07f,.035f,.93f,.065f);
-        fill=Box("Fill",bar,Red).GetComponent<Image>();Rect(fill.rectTransform,0,0,1,1);
-        fill.sprite=AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");fill.type=Image.Type.Filled;fill.fillMethod=Image.FillMethod.Horizontal;fill.fillAmount=.25f;
+        icon.transform.SetParent(parent,false);Rect(icon.transform,.055f,.17f,.29f,.83f);icon.GetComponent<Image>().preserveAspect=true;
+        amount.transform.SetParent(parent,false);Rect(amount.transform,.32f,.08f,.91f,.92f);amount.font=body;amount.fontSize=23;amount.enableAutoSizing=true;amount.fontSizeMin=16;amount.fontSizeMax=23;amount.color=White;amount.alignment=TextAlignmentOptions.MidlineRight;
+        amount.raycastTarget=false;
     }
-
+    static void Stat(Transform parent,int index,string name,out TextMeshProUGUI value,out TextMeshProUGUI compare,out Image fill)
+    {
+        var box=Node("Stat_"+name,parent);Rect(box,.04f+index*.31f,.29f,.33f+index*.31f,.39f);
+        Label("Caption",box,name=="FIRE RATE"?"ROUNDS / MIN":name=="DPS"?"DAMAGE / SEC":name,17,Muted,0,.58f,1,1);
+        value=Label("Value",box,"25",30,White,0,.03f,.64f,.63f);
+        compare=Label("Comparison",box,"",17,Muted,.65f,.08f,1,.6f,false,TextAlignmentOptions.Right);
+        fill=Box("Meter",box,new Color(.36f,.4f,.29f)).GetComponent<Image>();Rect(fill.transform,0,0,1,.02f);
+        fill.sprite=AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");fill.type=Image.Type.Filled;fill.fillMethod=Image.FillMethod.Horizontal;
+    }
+    static void BuildNotice(ShopManager shop)
+    {
+        var overlay=Box("StoreNotice",shop.safeArea,new Color(0,0,0,.86f));Stretch(overlay);shop.noticePanel=overlay.gameObject;
+        var box=Box("Message",overlay,Ink);Rect(box,.06f,.32f,.94f,.68f);
+        shop.noticeTitle=Label("Title",box,"STORE UNAVAILABLE",28,White,.06f,.73f,.94f,.92f);
+        shop.noticeText=Label("Message",box,"",23,Muted,.06f,.29f,.94f,.7f);shop.noticeText.textWrappingMode=TextWrappingModes.Normal;
+        var close=Button("Close",box,Accent);Rect(close.transform,.06f,.07f,.94f,.25f);Label("Label",close.transform,"OK",23,White,0,0,1,1,false,TextAlignmentOptions.Center);Click(close,shop.CloseNotice);overlay.gameObject.SetActive(false);
+    }
+    static void BuildSettings(GameObject canvas,MainMenuManager main)
+    {
+        var menu=canvas.GetComponent<SettingsMenu>();if(menu==null)menu=canvas.AddComponent<SettingsMenu>();
+        var previous=canvas.transform.Find("Panel_Settings");if(previous!=null)Object.DestroyImmediate(previous.gameObject);
+        var overlay=Box("Panel_Settings",canvas.transform,new Color(.02f,.025f,.02f,.97f));Stretch(overlay);menu.panel=overlay.gameObject;
+        menu.safeArea=Node("SettingsSafeArea",overlay);Stretch(menu.safeArea);
+        menu.sheet=Box("AudioSettings",menu.safeArea,Ink);menu.sheet.anchorMin=menu.sheet.anchorMax=menu.sheet.pivot=new Vector2(.5f,.5f);menu.sheet.anchoredPosition=Vector2.zero;menu.sheet.sizeDelta=new Vector2(660,570);
+        Label("Title",menu.sheet,"SETTINGS",50,White,.055f,.79f,.85f,.96f,true);
+        Label("Subtitle",menu.sheet,"AUDIO",20,Muted,.055f,.73f,.9f,.8f);
+        var close=Button("Close",menu.sheet,Panel);Rect(close.transform,.85f,.85f,.95f,.95f);Label("Label",close.transform,"X",25,White,0,0,1,1,false,TextAlignmentOptions.Center);Click(close,menu.Close);
+        MakeSlider(menu.sheet,"SOUND EFFECTS","Gunfire, zombies & other effects",.44f,out menu.effectsSlider,out menu.effectsValue);
+        MakeSlider(menu.sheet,"MUSIC","Background music",.14f,out menu.musicSlider,out menu.musicValue);
+        Label("Saved",menu.sheet,"Changes are saved automatically.",19,Muted,.055f,.035f,.95f,.1f);
+        Click(main.settingsButton.GetComponent<Button>(),menu.Open);
+        EditorUtility.SetDirty(menu);overlay.gameObject.SetActive(false);
+    }
+    static void MakeSlider(Transform parent,string name,string hint,float y,out Slider slider,out TextMeshProUGUI value)
+    {
+        var row=Node(name,parent);Rect(row,.055f,y,.945f,y+.24f);
+        Label("Label",row,name,24,White,0,.68f,.8f,1);
+        value=Label("Value",row,"100%",24,White,.8f,.68f,1,1,false,TextAlignmentOptions.Right);
+        Label("Hint",row,hint,20,Muted,0,.43f,1,.68f);
+        var trackRoot=Box("Slider",row,Color.clear);Rect(trackRoot,0,0,1,.4f);
+        var track=Box("Track",trackRoot,new Color(.23f,.26f,.21f));Rect(track,.025f,.42f,.975f,.58f);
+        var fill=Box("Fill",track,new Color(.61f,.65f,.42f));Stretch(fill);
+        var handleArea=Node("HandleArea",trackRoot);Rect(handleArea,.025f,.5f,.975f,.5f);
+        var handle=Box("Handle",handleArea,White);handle.anchorMin=handle.anchorMax=new Vector2(.5f,.5f);handle.sizeDelta=new Vector2(28,28);
+        slider=trackRoot.gameObject.AddComponent<Slider>();slider.fillRect=fill;slider.handleRect=handle;slider.targetGraphic=handle.GetComponent<Image>();slider.minValue=0;slider.maxValue=1;slider.value=1;slider.direction=Slider.Direction.LeftToRight;
+    }
+    static TMP_FontAsset CreateHeading()
+    {
+        const string path="Assets/Settings/ShopHeading.asset";
+        var font=AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(path);if(font!=null)return font;
+        font=TMP_FontAsset.CreateFontAsset(AssetDatabase.LoadAssetAtPath<Font>("Assets/The Asesino.otf"),90,9,UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA,1024,1024);
+        font.name="ShopHeading";font.TryAddCharacters("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 /-.");font.atlasPopulationMode=AtlasPopulationMode.Static;
+        AssetDatabase.CreateAsset(font,path);AssetDatabase.AddObjectToAsset(font.material,font);foreach(var tex in font.atlasTextures)AssetDatabase.AddObjectToAsset(tex,font);EditorUtility.SetDirty(font);return font;
+    }
+    static AudioMixer CreateMixer()
+    {
+        const string path="Assets/Resources/GameAudio.mixer";
+        if(!AssetDatabase.IsValidFolder("Assets/Resources"))AssetDatabase.CreateFolder("Assets","Resources");
+        var mixer=AssetDatabase.LoadAssetAtPath<AudioMixer>(path);if(mixer!=null)return mixer;
+        var flags=BindingFlags.Public|BindingFlags.NonPublic|BindingFlags.Instance|BindingFlags.Static;
+        var type=typeof(Editor).Assembly.GetType("UnityEditor.Audio.AudioMixerController");
+        var controller=type.GetMethod("CreateMixerControllerAtPath",flags).Invoke(null,new object[]{path});
+        var master=type.GetProperty("masterGroup",flags).GetValue(controller);
+        var paramType=typeof(Editor).Assembly.GetType("UnityEditor.Audio.ExposedAudioParameter");var parameters=Array.CreateInstance(paramType,2);
+        string[] names={"Effects","Music"};
+        for(int i=0;i<2;i++)
+        {
+            var group=type.GetMethod("CreateNewGroup",flags).Invoke(controller,new object[]{names[i],true});
+            type.GetMethod("AddChildToParent",flags).Invoke(controller,new[]{group,master});
+            var guid=group.GetType().GetMethod("GetGUIDForVolume",flags).Invoke(group,null);
+            var param=Activator.CreateInstance(paramType);paramType.GetField("guid",flags).SetValue(param,guid);paramType.GetField("name",flags).SetValue(param,names[i]+"Volume");parameters.SetValue(param,i);
+        }
+        type.GetProperty("exposedParameters",flags).SetValue(controller,parameters);EditorUtility.SetDirty((Object)controller);AssetDatabase.SaveAssets();return (AudioMixer)controller;
+    }
+    static void RoutePrefabs(AudioMixerGroup effects)
+    {
+        foreach(var guid in AssetDatabase.FindAssets("t:Prefab",new[]{"Assets"}))
+        {
+            string path=AssetDatabase.GUIDToAssetPath(guid);var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            if(prefab==null||prefab.GetComponentsInChildren<AudioSource>(true).Length==0)continue;
+            var root=PrefabUtility.LoadPrefabContents(path);bool changed=false;
+            foreach(var source in root.GetComponentsInChildren<AudioSource>(true))if(source.outputAudioMixerGroup==null){source.outputAudioMixerGroup=effects;changed=true;}
+            if(changed)PrefabUtility.SaveAsPrefabAsset(root,path);PrefabUtility.UnloadPrefabContents(root);
+        }
+    }
     static GameObject Find(string name)
     {
-        foreach(var root in EditorSceneManager.GetActiveScene().GetRootGameObjects())
-        foreach(var t in root.GetComponentsInChildren<Transform>(true))if(t.name==name)return t.gameObject;
-        throw new Exception("Object not found: "+name);
+        foreach(var root in EditorSceneManager.GetActiveScene().GetRootGameObjects())foreach(var t in root.GetComponentsInChildren<Transform>(true))if(t.name==name)return t.gameObject;
+        throw new Exception("Missing object: "+name);
     }
-    static RectTransform Node(string name,Transform parent)
+    static RectTransform Node(string name,Transform parent){var go=new GameObject(name,typeof(RectTransform));go.layer=5;go.transform.SetParent(parent,false);return (RectTransform)go.transform;}
+    static RectTransform Box(string name,Transform parent,Color c){var r=Node(name,parent);r.gameObject.AddComponent<Image>().color=c;return r;}
+    static Button Button(string name,Transform parent,Color c){var r=Box(name,parent,c);var b=r.gameObject.AddComponent<Button>();Style(b,c);return b;}
+    static void Style(Button b,Color c){var image=b.GetComponent<Image>();image.sprite=null;image.color=c;b.targetGraphic=image;var colors=b.colors;colors.highlightedColor=new Color(1.12f,1.12f,1.12f);colors.pressedColor=new Color(.8f,.8f,.8f);colors.disabledColor=new Color(.55f,.55f,.55f,.8f);b.colors=colors;}
+    static TextMeshProUGUI Label(string name,Transform parent,string text,float size,Color color,float x0,float y0,float x1,float y1,bool title=false,TextAlignmentOptions alignment=TextAlignmentOptions.MidlineLeft)
     {
-        var go=new GameObject(name,typeof(RectTransform));go.layer=5;go.transform.SetParent(parent,false);return (RectTransform)go.transform;
+        var r=Node(name,parent);Rect(r,x0,y0,x1,y1);var t=r.gameObject.AddComponent<TextMeshProUGUI>();t.font=title?heading:body;t.text=text;t.fontSize=size;t.fontSizeMin=size*.8f;t.fontSizeMax=size;t.enableAutoSizing=true;t.color=color;t.raycastTarget=false;t.alignment=alignment;t.textWrappingMode=TextWrappingModes.NoWrap;t.overflowMode=TextOverflowModes.Ellipsis;return t;
     }
-    static RectTransform Box(string name,Transform parent,Color color)
-    {
-        var rect=Node(name,parent);var img=rect.gameObject.AddComponent<Image>();img.color=color;return rect;
-    }
-    static TextMeshProUGUI Text(string name,Transform parent,string value,float size,Color color,float x0,float y0,float x1,float y1,FontStyles style=FontStyles.Normal)
-    {
-        var rect=Node(name,parent);Rect(rect,x0,y0,x1,y1);var t=rect.gameObject.AddComponent<TextMeshProUGUI>();
-        t.font=font;t.text=value;t.fontSize=size;t.fontStyle=style;t.color=color;t.raycastTarget=false;
-        t.enableAutoSizing=true;t.fontSizeMin=size*.65f;t.fontSizeMax=size;t.textWrappingMode=TextWrappingModes.NoWrap;
-        t.overflowMode=TextOverflowModes.Ellipsis;t.alignment=TextAlignmentOptions.MidlineLeft;return t;
-    }
-    static void StyleText(TextMeshProUGUI text,float size,Color color)
-    {
-        text.font=font;text.fontSize=size;text.enableAutoSizing=true;text.fontSizeMin=16;text.fontSizeMax=size;text.color=color;
-        text.alignment=TextAlignmentOptions.MidlineLeft;text.textWrappingMode=TextWrappingModes.NoWrap;
-    }
-    static void Rect(RectTransform r,float x0,float y0,float x1,float y1)
-    {
-        r.localScale=Vector3.one;r.localRotation=Quaternion.identity;r.anchorMin=new Vector2(x0,y0);r.anchorMax=new Vector2(x1,y1);
-        r.offsetMin=r.offsetMax=Vector2.zero;r.pivot=new Vector2(.5f,.5f);
-    }
-    static void Reparent(GameObject go,Transform parent,float x0,float y0,float x1,float y1)
-    {
-        go.transform.SetParent(parent,false);Rect((RectTransform)go.transform,x0,y0,x1,y1);
-    }
-    static void ButtonStyle(GameObject go,Color color,string label,float size)
-    {
-        var image=go.GetComponent<Image>();image.sprite=null;image.color=color;image.preserveAspect=false;
-        var button=go.GetComponent<Button>();button.transition=Selectable.Transition.ColorTint;
-        var text=go.transform.Find("Label")?.GetComponent<TextMeshProUGUI>();
-        if(text==null)text=Text("Label",go.transform,label,size,White,.025f,.05f,.975f,.95f,FontStyles.Bold);
-        text.text=label;text.alignment=TextAlignmentOptions.Center;
-    }
-    static void ClearClick(Button button) { button.onClick=new Button.ButtonClickedEvent();EditorUtility.SetDirty(button); }
-    static void SetClick(Button button,UnityEngine.Events.UnityAction action)
-    {
-        ClearClick(button);UnityEventTools.AddPersistentListener(button.onClick,action);
-    }
-
+    static void Rect(Transform transform,float x0,float y0,float x1,float y1){var r=(RectTransform)transform;r.anchorMin=new Vector2(x0,y0);r.anchorMax=new Vector2(x1,y1);r.pivot=new Vector2(.5f,.5f);r.offsetMin=r.offsetMax=Vector2.zero;r.localScale=Vector3.one;}
+    static void Stretch(RectTransform r){Rect(r,0,0,1,1);}
+    static void Click(Button button,UnityEngine.Events.UnityAction action){button.onClick=new Button.ButtonClickedEvent();UnityEventTools.AddPersistentListener(button.onClick,action);EditorUtility.SetDirty(button);}
     [MenuItem("Tools/ZombieRunner/Validate Weapon Catalog")]
     public static void Validate()
     {

@@ -19,6 +19,7 @@ MonoBehaviour:
     category: 0
     tier: 1
     price: 0
+    gemPrice: 0
     damage: 25
     roundsPerMinute: 180
     modelPrefab: {fileID: 2225440571541060868, guid: 3d475f10d076c444d8584c1be775ba38, type: 3}
@@ -29,6 +30,7 @@ MonoBehaviour:
     category: 0
     tier: 2
     price: 750
+    gemPrice: 30
     damage: 28
     roundsPerMinute: 200
     modelPrefab: {fileID: 7173815278906741782, guid: e7461e3cb4dfd384ea54841be167ca84, type: 3}
@@ -39,6 +41,7 @@ MonoBehaviour:
     category: 0
     tier: 3
     price: 1500
+    gemPrice: 60
     damage: 32
     roundsPerMinute: 220
     modelPrefab: {fileID: 7779035596426449466, guid: 436d84b39ebbb99449cf0c0ed23b24a5, type: 3}
@@ -49,6 +52,7 @@ MonoBehaviour:
     category: 0
     tier: 4
     price: 2600
+    gemPrice: 104
     damage: 36
     roundsPerMinute: 240
     modelPrefab: {fileID: 4920507860935382577, guid: 5f04650d3064895489cdb8f95e907c1b, type: 3}
@@ -59,6 +63,7 @@ MonoBehaviour:
     category: 0
     tier: 5
     price: 4200
+    gemPrice: 168
     damage: 40
     roundsPerMinute: 260
     modelPrefab: {fileID: 2804036681021304787, guid: 8147cbc638990a74995cb3f8161c7edd, type: 3}
@@ -69,6 +74,7 @@ MonoBehaviour:
     category: 0
     tier: 6
     price: 6500
+    gemPrice: 260
     damage: 46
     roundsPerMinute: 280
     modelPrefab: {fileID: 5789703485367661094, guid: 9c5ac491f264de345bd534069d892997, type: 3}
@@ -79,6 +85,7 @@ MonoBehaviour:
     category: 0
     tier: 7
     price: 9500
+    gemPrice: 380
     damage: 52
     roundsPerMinute: 300
     modelPrefab: {fileID: 6971496768782505918, guid: dfc4d87131163204eb41e8626f81e196, type: 3}
@@ -89,6 +96,7 @@ MonoBehaviour:
     category: 0
     tier: 8
     price: 14000
+    gemPrice: 560
     damage: 60
     roundsPerMinute: 330
     modelPrefab: {fileID: 814340701941695064, guid: 65d4bfa286fab474b943deee58acedb1, type: 3}
@@ -99,6 +107,7 @@ MonoBehaviour:
     category: 0
     tier: 9
     price: 20000
+    gemPrice: 800
     damage: 70
     roundsPerMinute: 360
     modelPrefab: {fileID: 1039969711115970564, guid: 0fba1bca4a50c20469807a90556f21dd, type: 3}
@@ -109,6 +118,7 @@ MonoBehaviour:
     category: 0
     tier: 10
     price: 30000
+    gemPrice: 1200
     damage: 85
     roundsPerMinute: 400
     modelPrefab: {fileID: 88317814946030486, guid: ea1ad08618ee1794b816f11a5aebd849, type: 3}
@@ -119,6 +129,7 @@ MonoBehaviour:
     category: 1
     tier: 1
     price: 1200
+    gemPrice: 48
     damage: 18
     roundsPerMinute: 420
     modelPrefab: {fileID: 8712849249800013046, guid: 457a5e0e81592b046a8717a070ea6770, type: 3}
@@ -129,6 +140,7 @@ MonoBehaviour:
     category: 1
     tier: 2
     price: 3200
+    gemPrice: 128
     damage: 23
     roundsPerMinute: 480
     modelPrefab: {fileID: 5943543978086211253, guid: 6289d31ac64ccb743a9e2886f210a9b9, type: 3}
@@ -139,6 +151,7 @@ MonoBehaviour:
     category: 1
     tier: 3
     price: 6500
+    gemPrice: 260
     damage: 29
     roundsPerMinute: 560
     modelPrefab: {fileID: 4379096843496564603, guid: 06e437090cb38a44a82a778b5475e418, type: 3}
@@ -149,6 +162,7 @@ MonoBehaviour:
     category: 1
     tier: 4
     price: 12000
+    gemPrice: 480
     damage: 36
     roundsPerMinute: 650
     modelPrefab: {fileID: 3386663550301400852, guid: 096cb921cb878724db474ea540032640, type: 3}
@@ -159,6 +173,7 @@ MonoBehaviour:
     category: 1
     tier: 5
     price: 21000
+    gemPrice: 840
     damage: 44
     roundsPerMinute: 750
     modelPrefab: {fileID: 7660624483632653708, guid: d7791594d53f2a9489a02a65171f508c, type: 3}
@@ -169,6 +184,7 @@ MonoBehaviour:
     category: 2
     tier: 1
     price: 2200
+    gemPrice: 88
     damage: 34
     roundsPerMinute: 300
     modelPrefab: {fileID: 639178805255782959, guid: 8095ef38caf3d1f459ef19d91b36d73e, type: 3}
@@ -179,6 +195,7 @@ MonoBehaviour:
     category: 2
     tier: 2
     price: 5000
+    gemPrice: 200
     damage: 43
     roundsPerMinute: 360
     modelPrefab: {fileID: 7907567775967570144, guid: b457496d9a25c3849a4673c6042fbac1, type: 3}
@@ -189,6 +206,7 @@ MonoBehaviour:
     category: 2
     tier: 3
     price: 10000
+    gemPrice: 400
     damage: 54
     roundsPerMinute: 420
     modelPrefab: {fileID: 3205656361919459485, guid: 9a6080cd2e05bd045be9af4ce6467c2e, type: 3}
@@ -199,6 +217,7 @@ MonoBehaviour:
     category: 2
     tier: 4
     price: 18000
+    gemPrice: 720
     damage: 67
     roundsPerMinute: 500
     modelPrefab: {fileID: 8609571142284620566, guid: c3e82067129c1184bb25997b1b2c3380, type: 3}
@@ -209,6 +228,7 @@ MonoBehaviour:
     category: 2
     tier: 5
     price: 32000
+    gemPrice: 1280
     damage: 82
     roundsPerMinute: 600
     modelPrefab: {fileID: 7916494374254889978, guid: ce45511be579fad46b4d79d52b5397f8, type: 3}

@@ -17,6 +17,13 @@ public class MainMenuManager : MonoBehaviour
         if (menuSafeArea == null) return;
         if (menuSize == new Vector2(Screen.width, Screen.height) && lastSafeArea == Screen.safeArea) return;
         menuSize = new Vector2(Screen.width, Screen.height);
+        var scaler = GetComponent<CanvasScaler>();
+        if (scaler != null)
+        {
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = Screen.width > Screen.height * 1.15f ? new Vector2(1440, 810) : new Vector2(720, 1280);
+            scaler.matchWidthOrHeight = 0;
+        }
         lastSafeArea = Screen.safeArea;
         menuSafeArea.anchorMin = new Vector2(lastSafeArea.xMin / Screen.width, lastSafeArea.yMin / Screen.height);
         menuSafeArea.anchorMax = new Vector2(lastSafeArea.xMax / Screen.width, lastSafeArea.yMax / Screen.height);

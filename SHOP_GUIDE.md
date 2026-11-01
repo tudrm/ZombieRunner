@@ -1,35 +1,44 @@
-# Shop — ZombieRunner
+# Shop și Settings — ZombieRunner
 
-## Cum verifici
+## Verificare în Unity
 
-1. În fereastra Project, deschide `Assets/Scenes/MainMenu.unity` prin dublu clic.
-2. Apasă Play în Unity, apoi SHOP. LOCKER deschide același arsenal.
-3. Alege Pistols, SMGs sau Rifles. Selectează o armă și trage peste model pentru rotire. Derulează lista pentru toate armele.
-4. Compară DAMAGE / HIT, FIRE RATE / RPM și DAMAGE / SEC cu arma echipată. RPM reprezintă numărul maxim de focuri pe minut; DPS este damage-ul teoretic pe secundă. La pistoale, fiecare foc necesită o apăsare.
-5. UNLOCK & EQUIP cumpără și echipează arma. EQUIP WEAPON echipează gratuit o armă deja cumpărată. EQUIPPED și NOT ENOUGH COINS sunt stări inactive.
-6. Închide Shop cu X, apoi apasă PLAY în meniul jocului. Se încarcă `ScenaJoc` cu arma aleasă. Folosește butonul cu glonț pentru a trage; pentru SMG/Rifle, ține-l apăsat.
-7. Oprește și repornește Play Mode pentru a verifica salvarea. Poți deschide direct `Assets/Scenes/ScenaJoc.unity`; arma echipată este citită din aceeași salvare.
-8. În Game View, încearcă rezoluții portrait și landscape. Interfața se adaptează și ține cont de `Screen.safeArea`.
+1. În Project, deschide `Assets/Scenes/MainMenu.unity` prin dublu clic. Apasă Play în Editor, apoi SHOP.
+2. Alege Pistols, SMGs sau Rifles. Selectează o armă și trage peste model pentru rotire. Pagina se derulează vertical; armele sunt urmate de ofertele Gems.
+3. DAMAGE este damage-ul unui glonț, ROUNDS / MIN este limita de focuri pe minut, iar DAMAGE / SEC este damage-ul teoretic pe secundă. Diferențele verzi/roșii se raportează la arma echipată. Pistoalele necesită apăsări separate.
+4. Pentru o armă blocată, apasă prețul în COINS sau GEMS. Se scade doar moneda aleasă și arma se echipează. Un preț este inactiv dacă soldul respectiv nu ajunge. O armă deținută are EQUIP; cea activă are EQUIPPED.
+5. Apasă fie Coins, fie Gems în colțul de sus: pagina derulează până la ofertele Gems. Nu există pachete de Coins.
+6. Pachetele afișate sunt 200 Gems / €2, 550 / €5, 1.200 / €10, 7.000 / €50 și 16.000 / €100. Bonusurile de 10%, 20%, 40%, 60% sunt raportate la rata de 100 Gems/euro a pachetului de €2.
+7. Momentan, apăsarea unei oferte deschide mesajul STORE UNAVAILABLE. Nu se retrage bani și nu se acordă Gems: produsele nu sunt configurate într-un magazin real.
+8. Închide Shop cu X. Apasă SETTINGS: SOUND EFFECTS controlează împușcăturile și efectele, iar MUSIC controlează separat viitoarea muzică. Încearcă 0%, apoi 50%, închide și redeschide meniul.
+9. Din meniul principal apasă PLAY. `ScenaJoc` folosește arma echipată și volumele salvate. Pentru arme automate, ține apăsat butonul cu glonț. Pentru un test ușor al efectelor, setează SOUND EFFECTS la 0% înainte să intri în joc.
+10. Oprește și repornește Play Mode pentru a verifica salvarea. În Game View încearcă iPhone SE Portrait, iPhone 15 și iPhone 11 Landscape. Nu este necesară reconstruirea UI.
 
-## Conținut și economie
+## Date și extensii
 
-- 20 de modele existente: 10 Pistols, 5 SMGs, 5 Rifles.
-- În fiecare categorie, tier-urile mai mari cresc damage-ul, RPM și prețul.
-- SIDEARM este gratuit; o salvare nouă începe cu 1.500 Coins și 50 Gems. Soldurile deja salvate sunt păstrate.
-- Fiecare zombie eliminat acordă 25 Coins, o singură dată.
-- Armele se cumpără cu Coins. Gems sunt afișate din sistemul existent; nu există achiziții cu bani reali.
-- Catalogul comun este `Assets/Settings/WeaponCatalog.asset`. Modifică în Inspector numele, prețul, damage-ul și roundsPerMinute. Păstrează ID-urile stabile pentru a nu pierde legătura cu armele cumpărate.
-- Cheile existente `MonedeSalvate` și `GemuriSalvate` sunt reutilizate. Proprietatea folosește `ZR_Owned_<id>`, iar selecția `ZR_EquippedWeapon`.
-- Datele Shop ajung la `WeaponManager`, apoi la `PlayerShoot` și `BulletMove`; `ZombieHealth` acordă recompensa.
+- Modelele existente, cele 3 categorii, gameplay-ul și salvările au fost reutilizate.
+- `Assets/Settings/WeaponCatalog.asset`: nume, modele, damage, roundsPerMinute, price (Coins), gemPrice (Gems). Prețul inițial în Gems este `ceil(price / 25)`. Câmpurile rămân editabile separat în Inspector.
+- `Assets/Settings/GemStore.asset`: cele 5 oferte și ID-urile stabile ale produselor. Acestea sunt ID-uri propuse, nu produse deja înregistrate.
+- `Assets/Settings/ShopHeading.asset`: font pentru titluri generat din `The Asesino.otf`, deja existent. Textul mic folosește Liberation Sans pentru lizibilitate.
+- Portofelul păstrează cheile `MonedeSalvate` și `GemuriSalvate`; armele păstrează `ZR_Owned_<id>` și `ZR_EquippedWeapon`. Soldurile existente nu sunt resetate.
+- `Assets/Resources/GameAudio.mixer` are grupurile Effects și Music, cu parametrii EffectsVolume și MusicVolume. Volumele originale ale armelor/surselor sunt păstrate; sliderul modifică volumul grupului.
+- SFX existente din scenă și prefab-urile cu AudioSource sunt rutate în Effects. Pentru sunete noi: setează Output la Effects în AudioSource. Pentru muzică: alege Music. Alternativ adaugă `AudioChannel` pe prefab; bifează `music` numai pentru muzică. Componenta rutează sunetul la instanțiere, înainte de redare.
+- Preferințele sunt `ZR_EffectsVolume` și `ZR_MusicVolume`; se aplică imediat și sunt salvate la închiderea Settings, pauză și ieșire. Muzica nu a fost adăugată în această etapă.
 
-## Verificări tehnice
+## Legarea viitorului magazin real
 
-În MainMenu, pornește Play Mode și alege `Tools > ZombieRunner > Run Shop Integration Checks (Play Mode)`. Lasă verificarea să termine înainte să oprești Play Mode. Testele cumpără temporar arme, schimbă scenele și trag proiectile reale; apoi restaurează cheile PlayerPrefs atinse. Nu interacționa cu jocul în timpul testelor. Rezultatul este în `Library/ShopIntegrationChecks.txt`.
+Este pregătit contractul `GemPurchaseProvider` și legătura lui cu UI, fără un SDK de plăți instalat sau tranzacții simulate. După alegerea platformei:
 
-Au trecut 135 de verificări în Unity 6000.3.6f1: progresia catalogului, deblocare, fonduri insuficiente, prevenirea plății duble, salvare între scene, toate modelele și statisticile, echiparea tuturor armelor, damage-ul proiectilelor, spawnerul existent, recompensa și blocarea tragerii în pauză.
+1. Creează în Google Play Console / App Store Connect produsele consumabile corespunzătoare ID-urilor din GemStore.
+2. Integrează SDK-ul magazinului și implementează `GemPurchaseProvider` într-o componentă separată. Atribuie componenta în `ShopManager.purchaseProvider`.
+3. `IsAvailable` devine true doar după conectare și încărcarea produselor. `LocalizedPrice` trebuie să returneze prețul real furnizat de magazin, cu moneda locală; UI îl folosește în locul valorii de prezentare în euro.
+4. `Purchase` trebuie să trateze anularea, lipsa conexiunii și stările pending. Furnizorul verifică tranzacția/receipt-ul, acordă Gems, salvează și confirmă consumul. Păstrează un registru persistent de transaction IDs pentru a preveni acordarea repetată la retry/restart. Nu acorda Gems doar la apăsarea butonului sau pe baza unui boolean neverificat.
+5. După finalizare, callback-ul actualizează portofelul și starea UI. La lansare trebuie procesate și tranzacțiile rămase pending. Pentru economia premium publicată, folosește validarea server-side și un portofel protejat; PlayerPrefs este salvarea locală actuală, nu un backend securizat.
+6. Verifică tot fluxul cu conturi sandbox pe dispozitive înainte de lansare. Prețurile efective/taxele și disponibilitatea depind de configurarea magazinului.
 
-Validarea catalogului este disponibilă și separat în `Tools > ZombieRunner > Validate Weapon Catalog`.
+## Testele proiectului
 
-Nu este necesară reconstruirea interfeței: scenele sunt deja salvate. `Build Shop in Existing Scenes` este un instrument de authoring care reconstruiește interfața și salvează ambele scene; păstrează catalogul existent, dar suprascrie ajustările manuale ale layout-ului.
+Din MainMenu în Play Mode, alege `Tools > ZombieRunner > Run Shop Integration Checks (Play Mode)`. Testul folosește armele, portofelele, butoanele, Mixer-ul și scenele reale, apoi restaurează cheile PlayerPrefs modificate, inclusiv preferințele audio. Nu interacționa cu jocul în timpul rulării. Rezultatul este în `Library/ShopIntegrationChecks.txt`.
 
-Validarea a fost făcută în Editor, nu printr-un build Android/iOS sau pe telefon. Avertismentele existente pentru componente lipsă din decor/Decal Projector și erorile serviciilor AI nu au fost reparate în această modificare. Butonul SETTINGS nu face parte din implementarea Shop.
+`Tools > ZombieRunner > Validate Weapon Catalog` verifică datele catalogului. `Build Shop in Existing Scenes` reconstruiește și salvează UI în MainMenu și rutarea audio în ScenaJoc/prefab-uri; nu este necesar pentru a juca și poate suprascrie ajustările manuale de layout.
+
+Verificarea este în Editor; nu reprezintă validarea pe dispozitive sau a plăților reale. Problemele vechi ale decorului/Decal Projector și serviciilor AI sunt separate de aceste schimbări.

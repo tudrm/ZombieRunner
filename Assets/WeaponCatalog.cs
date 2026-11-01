@@ -12,6 +12,7 @@ public class WeaponDefinition
     public WeaponCategory category;
     public int tier;
     public int price;
+    [Min(0)] public int gemPrice;
     public int damage;
     public int roundsPerMinute;
     public GameObject modelPrefab;
@@ -54,16 +55,21 @@ public class WeaponCatalog : ScriptableObject
     }
 
     public bool Purchase(WeaponDefinition weapon, out string message)
+        => Purchase(weapon, false, out message);
+
+    public bool Purchase(WeaponDefinition weapon, bool useGems, out string message)
     {
         if (weapon == null || Find(weapon.id) != weapon) { message = "Weapon unavailable."; return false; }
         if (IsOwned(weapon)) { message = "Already in your arsenal."; return false; }
-        int balance = PlayerPrefs.GetInt(CoinsKey, StartingCoins);
-        if (weapon.price < 0 || balance < weapon.price) { message = "Not enough coins. Earn more by eliminating zombies."; return false; }
-        PlayerPrefs.SetInt(CoinsKey, balance - weapon.price);
+        string key = useGems ? GemsKey : CoinsKey;
+        int cost = useGems ? weapon.gemPrice : weapon.price;
+        int balance = PlayerPrefs.GetInt(key, useGems ? 50 : StartingCoins);
+        if (cost <= 0 || balance < cost) { message = useGems ? "Not enough Gems." : "Not enough Coins."; return false; }
+        PlayerPrefs.SetInt(key, balance - cost);
         PlayerPrefs.SetInt(OwnedPrefix + weapon.id, 1);
         PlayerPrefs.SetString(EquippedKey, weapon.id);
         PlayerPrefs.Save();
-        message = weapon.displayName + " purchased and equipped.";
+        message = weapon.displayName + " unlocked and equipped.";
         return true;
     }
 

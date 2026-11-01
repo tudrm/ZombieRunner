@@ -56,7 +56,7 @@ public class WeaponPreview : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         previewCamera.nearClipPlane = .1f;
         previewCamera.farClipPlane = 15;
         previewCamera.clearFlags = CameraClearFlags.SolidColor;
-        previewCamera.backgroundColor = new Color(.055f, .07f, .075f, 1);
+        previewCamera.backgroundColor = new Color(.09f, .105f, .092f, 1);
         previewCamera.cullingMask = 1 << PreviewLayer;
         previewCamera.allowHDR = false;
         var data = previewCamera.GetUniversalAdditionalCameraData();
