@@ -1,0 +1,562 @@
+[
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\AudioChannel.cs",
+    "Hash": "77FD6F97E9FC5C30C3F76F534FE97D4C5A5214B2D733E782D04D49E477F1A027"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\BulletMove.cs",
+    "Hash": "E224E2D1ADEA8F8C002FA163ED4A906027C7F4E61F961784C05462C2B21B3CCC"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\GameAudio.cs",
+    "Hash": "78A7D2BFC13E204B1848C324EB0FD9BBE26E1697FF78FA8F5B30A80F8750F1A2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\GameManager.cs",
+    "Hash": "6795CC0C5231B260B4568113FA366CEAC645C8A77A43FEC48A298A2FE7C4CC27"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\GameOverZone.cs",
+    "Hash": "D9924B4308625C93CC6A2E8BC2E5BD97F8C129E8E8D69BFF65F7096416E1FEDC"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\GemOfferButton.cs",
+    "Hash": "B4A905614BFCA3D637D561B664E15C1B329B6E0D073D2D1C50F26FFFE53DD5D2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\GemStoreCatalog.cs",
+    "Hash": "0FB266A767B9E7A3B14709A2D3F89D71814AC5F9668BF7E44F419A296DBE405F"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\MainMenuManager.cs",
+    "Hash": "41D49E1264EBCB03E96C3EED1F8463DD71DA09B1E780D1AB669C24DA204AA579"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\MainMenuPresentation.cs",
+    "Hash": "AA7BE40B56865D14E5A3AA641924F5866C814700D14A40159A47536F76748108"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\PlayerCollision.cs",
+    "Hash": "17F1175B777A45F5FF541CD6F6C6D2B8E16716F8C168E5CBFDAD3F686FDA8656"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\PlayerHealth.cs",
+    "Hash": "F31F58D60D7C9F4322101E94C6245A30F033963A42451A9D42A44D9516867B71"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\PlayerMove.cs",
+    "Hash": "9A3FB0EF585FA5FE019F392297EB91D094D14A270BB0C85E390A55997595F7AD"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\PlayerShoot.cs",
+    "Hash": "0E23C9091EA2AFE2D08399C06F4A8E7AD04CB2147423DFF6FECBC3F14B80112A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ScoreManager.cs",
+    "Hash": "19014758ADE07CE6D6C33EAC277071C56EE6368D64B38707433186B792A4DA71"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\SettingsMenu.cs",
+    "Hash": "45BED3D9B5F82B86CBC1E9CCDA1717C7D018083AE5E8E072D777B08376B90945"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShootButton.cs",
+    "Hash": "839B4E82BAF4588AF836A7F4C66EEEF7AB3F3055EE8288588DFB43B5D61A9CA8"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShopManager.cs",
+    "Hash": "59B932D44DC03C3F926534AA995B033EC3A5CE4EBD83A3EACDC7B44FAD939AC2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShopPresentation.cs",
+    "Hash": "541682085D10E6F00042ECDCE42724915529AA9908B0DCEF985C4856E6F35C4D"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShopWeaponCard.cs",
+    "Hash": "CDC7D7BF8AC5EF6310CDDCD5AF5206FD80469315B433D395DB1779466F5D313A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\WeaponCatalog.cs",
+    "Hash": "0C556FBD3FE879D1E3CB7C340A11BA15C3F1CDBAC755FB842B2FDC32D285F017"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\WeaponManager.cs",
+    "Hash": "368E706B5446C456A6AE6B8963CA7B10FC899FCB23461F7D3BB8A77B17650DDC"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\WeaponPreview.cs",
+    "Hash": "2CD6EFCE862F1C130C24CE0E2AD2A3AB2872631AC656F43B468EF69BFDA97256"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ZombieHealth.cs",
+    "Hash": "74260EFCA9FA0B948EA9E0AD2A377F644814BA9F4ED022E9004B79CE17B23171"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ZombieMove.cs",
+    "Hash": "6D90E0090E49AAF6A3D5D3D7F480275DFC092BD76C85D2433C0F1642CA5AEE29"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ZombieSpawner.cs",
+    "Hash": "7BC3BC00A3C2995C6ABCE5007463E1179678213080C3C34961110F009BA3B2A8"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\MainMenuCanva.meta",
+    "Hash": "2616A0120F620F78D38455CC6265B9A3F98009B55277EF5BF0DF3347FC7A254A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva.meta",
+    "Hash": "69E23E2B76354F48E895CC8AAB941BF81B3C56831E9865B9FC2ECF99BCA6BBEA"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\MainMenuCanva\\CityBackground.jpg",
+    "Hash": "43729EE97DE7B79578374D0E0FB24457F773CF42BB43DE09A0131AA6E214A798"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\MainMenuCanva\\CityBackground.jpg.meta",
+    "Hash": "C4441A33C5522DF20CE87706A0E2B79158E44DCC10F2662A3B80CD5FA4B80358"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art.meta",
+    "Hash": "1C28BC8DF7C2E258940686CC87951A332545FAD07C641037874DE085CF2434A0"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\ASSET_SOURCES.json",
+    "Hash": "09E7F30748135AE5AA88EB8E1473B7BC53BA44F2CC7D03D53CFCE3CAE1D589CA"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\ASSET_SOURCES.json.meta",
+    "Hash": "544487A7B206EE91B927C403397F288DB83D9F2A3339E694FDE19E26D19C5A30"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Backup.meta",
+    "Hash": "656F66A50B44838E2856D96F4E26145FC8218F5BFCDC017793DEE3797A3AD7D9"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts.meta",
+    "Hash": "D36F40DB80E634F1BBEBDFDB8A5FE0E18DC56EA121A7B6B641B82E8301C1446E"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Prefabs.meta",
+    "Hash": "DB1B43D04507AF1F4BC20331468849984E7BEF5AB461BB28C7ECA02DA6BD0C60"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\ButtonNeutral.png",
+    "Hash": "7C3720FD00E98D3D782A2850E9A19C6EA1C7F3D56A6EAC8FAA73C7C26EEACABE"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\ButtonNeutral.png.meta",
+    "Hash": "56F44016C5976EFC438238397206727C71221C883A263B1B0EDAE3898EFCF21C"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\BuyCoins.png",
+    "Hash": "2ED668170182C50105A42E26DAA36ACA255667EADBF40FFF926BB9E6DC13B514"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\BuyCoins.png.meta",
+    "Hash": "B1F31D1350826DF74CA2B177507502AEBE6C3BA6EC1E8A5D1793BDFDF962EDD7"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\BuyGems.png",
+    "Hash": "064F4D5D2C3BBBC959EFE22667E446AD69DD76D44658BEA4546940133BEFE58F"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\BuyGems.png.meta",
+    "Hash": "C4C98EB212E2A4DDA32178C12C8F11E5C77C63F22E670AE0F104E25A97722025"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Card.png",
+    "Hash": "6B8E3AAFA343CAA20A719597410010913158A4C470D8C9D2009EAC885FA6F10C"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Card.png.meta",
+    "Hash": "BA3A0CAD219F6D2859C5B499443CC0E96B91DA33EA8A092B85E89A781ADCB67A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Coin.png",
+    "Hash": "D0119C576BBF842E400535EDBBB75D2FDFAA4399B4673461AE9360DD477DC992"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Coin.png.meta",
+    "Hash": "DD26CE17F5A5E53D723C65F0344258AE9B7F8A11BB4D654E6226FA58790E1FA5"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Frame.png",
+    "Hash": "9BF9042685D55A7C4B7659F97E9E5EB14834CF393152D6079943858364F7AC6C"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Frame.png.meta",
+    "Hash": "16C5C87F0A3AFE0AE36A0FE556AF3F9CF71B0A750E370E19A74FEDC5B85B39A2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gem.png",
+    "Hash": "70B510600E02D5C1ED1C15E84774C141676BC04D6EF6B2477CB45D9860A0F1EA"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gem.png.meta",
+    "Hash": "0345ABB1366F417C7576BCECE3863C0348BA69EE2ADA0AA771AD9A641B11E9E4"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems1200.png",
+    "Hash": "E4031E6890A6B879A627B04A4B1B62EA5BB6472E0DE466D3F69342E8C27AA67B"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems1200.png.meta",
+    "Hash": "7CFF5F9520E7D457E7D30E4389B865876DE3B8D93A97AEB3EFC0FCAC1F865DAB"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems16000.png",
+    "Hash": "505DFB4C2C97470C8654A101AFEED817B6311ADCF375E1C9DDBC1671D6AEE01C"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems16000.png.meta",
+    "Hash": "9827A5A4507337F58B3128029CA7C1D98DBEC5D39130CC777D57A80C112265E3"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems200.png",
+    "Hash": "18C72B5E73C64744F1E330BB469FB6941CD3D2F1A209904D06A5CA99ACBF3330"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems200.png.meta",
+    "Hash": "89F94E77834EA8E9A0381AA06BEFACADBD52569F7517CD7935D2F78410DE6A17"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems550.png",
+    "Hash": "452E3BE9D872DF28EACCBBEC0B05B37121ED2BDFF4F01E005563B0E04E52D997"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems550.png.meta",
+    "Hash": "FE22A50A2F773EF6E641517D19DEB13A3B2A14824018AF20BDE434D1BBDB9812"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems7000.png",
+    "Hash": "5B82E9D0473A5ADCD25D7A46E821973BEA03035EBBE6AF52B6F7CBCBCEC8A6CF"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Gems7000.png.meta",
+    "Hash": "38065BD68EEC60F52246B46502F4EFA803C6C720C4A9E9F4CD2A806516BB68D2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Hero.png",
+    "Hash": "1AF7A621CB5F964DB18ECC7EF344F284A23C7DE608E11F363059B290F266F671"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\Hero.png.meta",
+    "Hash": "30010D2FC81CE702FF6680E3A570A47B14BD3FA1B5006E1601648B194A4C6D64"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\TabActive.png",
+    "Hash": "2960D376AD2A9840EF44B62DEADBD468BFBA9CF7AAE7A0A3ECDC9C153DD61542"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Art\\TabActive.png.meta",
+    "Hash": "849108DC1C6A0550DC7F4558E70AD7359125F705F2333410F125D3C0F9D88E62"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Backup\\OriginalShop.prefab",
+    "Hash": "6A99AFC3A8AF51162ABC00F33086712A99B3667727A9776FF0362937C3C5B4FF"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Backup\\OriginalShop.prefab.meta",
+    "Hash": "4E2F377F5E9B3BF7093E8F9E2E27A6B0386F2096CD203F985F4496B38BFB6337"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts\\BarlowCondensed SDF.asset",
+    "Hash": "93DA4E9D7DD49A37AC1F669031BE40F82ADD23CB11E57906B071C1DDB17FDC5D"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts\\BarlowCondensed SDF.asset.meta",
+    "Hash": "BD339628A13C9BBEC0909409A076964EB073D408BE02BDAB0B0865535192702C"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts\\BarlowCondensed-Bold.ttf",
+    "Hash": "E476562EC9C1E16CF16475895B511F08C804F438CC9A9F80A44EA50A0EEB5B65"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts\\BarlowCondensed-Bold.ttf.meta",
+    "Hash": "BD68AE18954F67EA9F0B5B2EF12428B4128AB7C865043313B9C631E777CD36DB"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts\\OFL.txt",
+    "Hash": "186D750EB496A4C17A76385F82BE6AEA2AC1CF2DE074A811D63786CF374EA73F"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Fonts\\OFL.txt.meta",
+    "Hash": "6A8D6D2AFF6D619B06AEB0EBEF22610B793C297FB9ECDB3F3C11B9E85051EB12"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Prefabs\\WeaponCard.prefab",
+    "Hash": "B2EF3A2D943488C72607D57830B9E7DD5336C03128EC95A9DF6DF995BF558DC3"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\UI\\ShopCanva\\Prefabs\\WeaponCard.prefab.meta",
+    "Hash": "C21520E43EBC0797AA0DCF09546EF240BF648B326BB23C86E053FD60F35AABF2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Alone_31.12.wav",
+    "Hash": "FEAC901EAD44D3707768E33CF5CD9F8A70FFF2E989ED71D6AA832F12DD5E49F6"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Alone_31.12.wav.meta",
+    "Hash": "8C69149768041C4BF625ECE8AF8064A806C9F49E83786518F2E90BF204EFAD6B"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Build Profiles.meta",
+    "Hash": "CACE306635EF7C6AFD8B8ABC91EEE8BA4D5395871A208D02C29AD609F4B1B7FB"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\DefaultVolumeProfile.asset",
+    "Hash": "463776C51AE49D4FEF980E8FD268081B2F505610D79315003FAAE1ACFF8F4115"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\DefaultVolumeProfile.asset.meta",
+    "Hash": "43E8F7BED8F99DA631D74EE652953C230594E150CE305D313EC0844E312D574F"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\GemStore.asset",
+    "Hash": "F89A4E20A349204BF04E935C16EC539400D51CF2E6728179583AB7A62378E0EE"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\GemStore.asset.meta",
+    "Hash": "7E9C690871112979F5B88FCA30964B1198F397A7ED10E3EAD581128906A22374"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Mobile_Renderer.asset",
+    "Hash": "76431DD5DD9DB51E5C515B8EFE45DB0B0AE9C26081CED605A29ABBC608B11344"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Mobile_Renderer.asset.meta",
+    "Hash": "DA2404303C1D6F6AF244A6BB7AC7D65CC8CBDD741C804CC913BE8BE861E65379"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Mobile_RPAsset.asset",
+    "Hash": "E43E61F3CA54AA12D1D4774E00EA7549623D8B2D2A287A7173FE1FC8F2D93C65"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Mobile_RPAsset.asset.meta",
+    "Hash": "4718CAB1245B68049FC0C4E0ACD26AC7C4A7E8EB7DCDB8F357159A129CA615EC"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\PC_Renderer.asset",
+    "Hash": "13F85FBA57A55E3A68EFD59B3016F0C6F2D971B99F5E213ED52A7B84DD679789"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\PC_Renderer.asset.meta",
+    "Hash": "0F063B81DB6817DB7EC416712A575DD3E9960330E241DE389115F02ED5B3FFBD"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\PC_RPAsset.asset",
+    "Hash": "855C6938466918217940A876F10C4C4D17426EAC5DAD20359707AA017EC0C996"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\PC_RPAsset.asset.meta",
+    "Hash": "DD77AB3EB523C6E234943BC07250360E2AE934CED15C075A56168F2F7A3B5CE4"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\SampleSceneProfile.asset",
+    "Hash": "4D4C6F220C271E8B76A1B23722C6240F264535F7DBAEC003B320431DCB4FB822"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\SampleSceneProfile.asset.meta",
+    "Hash": "061BD6671BC9E14A48FBD838843591FAD839A72187619A57F9F76F50EAA60027"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\ShopHeading.asset",
+    "Hash": "FE1AECEA1D07A24AE5F31431E6EF6B0FD4EED83F7A2FA9F2189D609FB36994C6"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\ShopHeading.asset.meta",
+    "Hash": "4134E91A1651A4B00532C000BFA5F78AF540694375A816BBEE10FE92FEE4D275"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\UniversalRenderPipelineGlobalSettings.asset",
+    "Hash": "BD0CE2DD2B51F36185F294632E82D6F55BAA9B9DECB60F315084BCDD75FBB102"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\UniversalRenderPipelineGlobalSettings.asset.meta",
+    "Hash": "9F7756AF7860ADE1E88DB1B5CFFA7DFF8CC535F6AC08819A4E26164BF4018717"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponCatalog.asset",
+    "Hash": "4C31CA70612CE46A14104FAB68B9C31840ACAC7B832DD71CB1FC41865F285950"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponCatalog.asset.meta",
+    "Hash": "4A0B75E3CC2F0B03378A87CB37BC2A304B072B215B1F33303F81903AA57D0D2A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails.meta",
+    "Hash": "EC0936041513D54AB7FC703345582776664362B8C9A34D21BC0A013A5AC14033"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Build Profiles\\iOS.asset",
+    "Hash": "83F8AA397B136B59C49307B344FCF253BFF40BF8B6C5F7A37E423AC656C34CAE"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\Build Profiles\\iOS.asset.meta",
+    "Hash": "4B0EB6628B66B50941E700F444AB9DB62885F0DCAB38ECDE32EB179264A87FE0"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_L.png",
+    "Hash": "4E589D6244F575C7A399E6F9B9D3F73E56A05DD059EDAC0CA7AEA2A3DB1C6029"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_L.png.meta",
+    "Hash": "7FBD8E904F7178D02688563D72802A88FADD5E0DB11EF9D4CD1B5A3DC3EE0926"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_M.png",
+    "Hash": "359F38A0D3A6413E05C120C0C71127B898A40A192EE5DAE2D10E64E3344074AE"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_M.png.meta",
+    "Hash": "F205EC96B39A2E0B2A940EB40A397F36A92E248E1D9E2F9897EF3F55076C9B8B"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_N.png",
+    "Hash": "A630804FB864B7E5359C8BE9413213AC8FB3F27F29ABDC09A07076D25F7EFEC6"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_N.png.meta",
+    "Hash": "67E68C9244939831C3ECA56E03F474B9981310F50282D4FFA01BFA3255781351"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_O.png",
+    "Hash": "0108EBEFB27ACEE400D4CAB65D611CD3B9F911837DE9206EAEC63BBE72ED4887"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_O.png.meta",
+    "Hash": "6CE0F7361E38A695D1F697929CA248C311D2F000D8131DADEE9385F10040AFDD"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_P.png",
+    "Hash": "4C6A431CF5B00DF1E787D9434ADA8965D5C8D2A3200573DDC284E8F428FDB65A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\ar_P.png.meta",
+    "Hash": "0A86E0577B72DF11E10B4574FDCA99B20F6C206A249F1DA52140239EB54AC561"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_A.png",
+    "Hash": "4CACCD8D2D7F05DB1ED5E3908CC186514A0198B8435C1C09D06285FF6B330D90"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_A.png.meta",
+    "Hash": "D99C2BA124B5AA36EEBEDB6188ECDD157CDE1401CBFFEDC29618A045F69156F3"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_B.png",
+    "Hash": "F41174F5F977CC89FE06E127EA8D59DA91F7ACF595D43E9401F047B9EAFA68D3"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_B.png.meta",
+    "Hash": "9812A0833DE91ECD316C07B69DD14267AA9A3EE26F56477CF1369B3B314E1C2B"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_C.png",
+    "Hash": "4F7EBAECDAE7C4EE1AF4DB9516DBC1F9743945FCF67547D501B6AC64AE0C3608"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_C.png.meta",
+    "Hash": "5DCF9031AC36084715C7219855EF8C3E6016665F2119B6C69DE61A216A597D09"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_D.png",
+    "Hash": "C5390F73F325C2373A09EBE70EB621133953C28391BF43F35E6BD2D7BF7BC6B3"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_D.png.meta",
+    "Hash": "EFD6DEFA8A0D972E8E78C02A1A1160A06E466569A33030F4BFABE562B23282A2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_E.png",
+    "Hash": "C440DC48146677D8000D9C8E86DCDF7DF6B957F3E75477276C1A9AFE1F184D78"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_E.png.meta",
+    "Hash": "B1F9C6794430D563D06A6D16CE4CD491308CF42B014C1675F03EAD6BC6B64356"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_F.png",
+    "Hash": "EF1CD5875DD5A8EE1A7B9256BC8BC8DC126807EAD108F0844CBFB392CC65AF48"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_F.png.meta",
+    "Hash": "B892591855D7B34C5041912BAC3A1A4209266558F0DD1A3226833E220BD6D94A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_G.png",
+    "Hash": "4561F7D052FB1E7DEBEB728A2E09B9E3F934EC1FFF6003052933B69F1810A809"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_G.png.meta",
+    "Hash": "6E57D6878D073EA35C1221992C862DB39226A081E67BBF7028F0CBBE897C744C"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_H.png",
+    "Hash": "03F9DCFF689104D81D953C50BAF7B365D303818C6D264A40A18A270FEF85B7D7"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_H.png.meta",
+    "Hash": "AD67C626868B9FEFFC12B7D57829CDB1EECA19EE62C50DE81C6ADE830E1A708F"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_I.png",
+    "Hash": "1D0BF09D3AE45D82CC1651C8ECA4F1A51DB80D0AFB7B8326F8C06AD8F14BF751"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_I.png.meta",
+    "Hash": "027A35C3B0254584C60A374825D12AD90A637D8EA6583E56450C6B256623D049"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_J.png",
+    "Hash": "21361AEF43247B4901C87910F067BF6D79BB4CA20B3EA2ECCB0D51A3E4CE5216"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\pistol_J.png.meta",
+    "Hash": "B65B46911B41898BB6241E29842FBD730347803C0D1243146F8DAB43AB467253"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_F.png",
+    "Hash": "4BCAEC2F01A6D38849344A9FDBC0FD8C779E39BFBE29BE8102F10B6236BD5BCE"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_F.png.meta",
+    "Hash": "BEB64722A60192382DC072027F485DD6D8E4EF820AA0E61DC4BC0A0C28F96D4B"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_G.png",
+    "Hash": "DB30E798F6902C3F93CED2E9D2CE513AF6301039E64CAF1F3E0DD10D1DD1386A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_G.png.meta",
+    "Hash": "CB9FBDB985187B7DB6CF0AAFBCCFB478453DC973D34280870F2D2A7DA3D6F573"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_H.png",
+    "Hash": "3BC241B9D8528C0130FD31E79B4658C78CAA99603390810BA3D8D18294AD91DE"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_H.png.meta",
+    "Hash": "26502490056A95D071EF3A94C897ACB9E2F77DD599AB2151CB5F4ED8A77ED5D6"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_I.png",
+    "Hash": "CF44194DD1919B2306D0D84E4FB6A80FD33789B8221DEA5F2D46862DB410A509"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_I.png.meta",
+    "Hash": "B3112D539249F9D0FB41E81427838A6A3EBB40D85F8B1337144A530AC10260FD"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_J.png",
+    "Hash": "B17BDB86C083F71130D9D9C594264048ADB1644D3191DBB916A70E6BD0A56165"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponThumbnails\\smg_J.png.meta",
+    "Hash": "36FEBA96387AA15FAC89FEFB1D6AB6194C8023F6E2AA77A4EB9B0D5D8B98D906"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Scenes\\ScenaJoc.unity",
+    "Hash": "FBCEA7CE226F5859C77DB47C05D7494CA844ACE26C082B37AB39C62987DCB617"
+  }
+]

@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     public Image loadingBar;        
     private bool isLoading;
     public RectTransform menuSafeArea, menuArtwork, playButton, shopButton, lockerButton, settingsButton;
+    public MainMenuPresentation presentation;
     private Vector2 menuSize;
     private Rect lastSafeArea;
 
@@ -28,6 +29,11 @@ public class MainMenuManager : MonoBehaviour
         menuSafeArea.anchorMin = new Vector2(lastSafeArea.xMin / Screen.width, lastSafeArea.yMin / Screen.height);
         menuSafeArea.anchorMax = new Vector2(lastSafeArea.xMax / Screen.width, lastSafeArea.yMax / Screen.height);
         menuSafeArea.offsetMin = menuSafeArea.offsetMax = Vector2.zero;
+        if (presentation != null)
+        {
+            presentation.Layout();
+            return;
+        }
         bool wide = Screen.width > Screen.height * 1.15f;
         Place(menuArtwork, 0, 0, wide ? .6f : 1, 1);
         if (wide)

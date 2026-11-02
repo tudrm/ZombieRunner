@@ -7,6 +7,9 @@ using UnityEngine.Rendering.Universal;
 public class WeaponPreview : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     public RawImage display;
+    [Header("Shop presentation (does not affect gameplay cameras)")]
+    public bool transparentBackground;
+    public Color rimColor = new Color(.6f, .78f, 1);
     Camera previewCamera;
     GameObject stage, model;
     Transform pivot;
@@ -56,18 +59,18 @@ public class WeaponPreview : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         previewCamera.nearClipPlane = .1f;
         previewCamera.farClipPlane = 15;
         previewCamera.clearFlags = CameraClearFlags.SolidColor;
-        previewCamera.backgroundColor = new Color(.09f, .105f, .092f, 1);
+        previewCamera.backgroundColor = transparentBackground ? Color.clear : new Color(.09f, .105f, .092f, 1);
         previewCamera.cullingMask = 1 << PreviewLayer;
         previewCamera.allowHDR = false;
         var data = previewCamera.GetUniversalAdditionalCameraData();
         data.renderPostProcessing = false;
         data.volumeLayerMask = 0;
         data.renderShadows = false;
-        texture = new RenderTexture(768, 512, 16) { name = "Shop selected weapon", antiAliasing = 2 };
+        texture = new RenderTexture(768, 512, 16, RenderTextureFormat.ARGB32) { name = "Shop selected weapon", antiAliasing = 2 };
         previewCamera.targetTexture = texture;
         display.texture = texture;
         AddLight("Key", new Vector3(35, -35, 0), Color.white, 2.4f);
-        AddLight("Rim", new Vector3(20, 145, 0), new Color(.6f, .78f, 1), 1.7f);
+        AddLight("Rim", new Vector3(20, 145, 0), rimColor, 1.7f);
         stage.SetActive(isActiveAndEnabled);
     }
 

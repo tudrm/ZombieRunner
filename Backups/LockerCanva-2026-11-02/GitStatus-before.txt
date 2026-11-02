@@ -1,0 +1,25 @@
+ M Assets/MainMenuManager.cs
+ M Assets/Scenes/MainMenu.unity
+ M Assets/ShopManager.cs
+ M Assets/WeaponPreview.cs
+?? Assets/Editor/CanvaShopAuthoring.cs
+?? Assets/Editor/CanvaShopAuthoring.cs.meta
+?? Assets/Editor/CanvaShopChecks.cs
+?? Assets/Editor/CanvaShopChecks.cs.meta
+?? Assets/Editor/MainMenuCanvaAuthoring.cs
+?? Assets/Editor/MainMenuCanvaAuthoring.cs.meta
+?? Assets/MainMenuPresentation.cs
+?? Assets/MainMenuPresentation.cs.meta
+?? Assets/ShopPresentation.cs
+?? Assets/ShopPresentation.cs.meta
+?? Assets/ShopWeaponCard.cs
+?? Assets/ShopWeaponCard.cs.meta
+?? Assets/UI.meta
+?? Assets/UI/
+?? Assets/_Recovery.meta
+?? Assets/_Recovery/
+?? Backups/
+?? MAIN_MENU_CANVA_IMPLEMENTATION.md
+?? MainMenuCanvaReview/
+?? SHOP_CANVA_IMPLEMENTATION.md
+?? ShopCanvaReview/

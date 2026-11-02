@@ -27,6 +27,7 @@ public class ShopManager : MonoBehaviour
     public GameObject noticePanel;
     public TextMeshProUGUI noticeTitle, noticeText;
     public WeaponPreview preview;
+    public ShopPresentation presentation;
     public WeaponDefinition Selected { get; private set; }
     public WeaponCategory Category { get; private set; }
     readonly List<Card> cards = new List<Card>();
@@ -73,6 +74,8 @@ public class ShopManager : MonoBehaviour
             var go=Instantiate(cardTemplate,cardContent);go.name="Weapon_"+w.id;go.SetActive(true);
             go.transform.Find("Name").GetComponent<TextMeshProUGUI>().text=w.displayName;
             go.transform.Find("Thumbnail").GetComponent<Image>().sprite=w.thumbnail;
+            var cardView=go.GetComponent<ShopWeaponCard>();
+            if(cardView!=null)cardView.weapon=w;
             var c=new Card{weapon=w,background=go.GetComponent<Image>(),ownership=go.transform.Find("Ownership").GetComponent<TextMeshProUGUI>(),selectedMark=go.transform.Find("Selected").gameObject};
             cards.Add(c); go.GetComponent<Button>().onClick.AddListener(()=>{ SelectWeapon(w); ScrollTop(); });
         }
@@ -136,6 +139,7 @@ public class ShopManager : MonoBehaviour
         descriptionText.text=ownedSelected?"": "Choose Coins or Gems. Includes automatic equip.";
         purchaseButton.GetComponent<Image>().color=ownedSelected?new Color(.25f,.31f,.22f):new Color(.44f,.37f,.23f);
         Top((RectTransform)purchaseButton.transform,0,26,ownedSelected?actionBar.rect.width:actionBar.rect.width*.49f,62);
+        if(presentation!=null)presentation.Refresh();
     }
     public void ActualizeazaInterfata()
     {
@@ -186,6 +190,13 @@ public class ShopManager : MonoBehaviour
         safeArea.anchorMin=new Vector2(lastSafe.xMin/Screen.width,lastSafe.yMin/Screen.height);
         safeArea.anchorMax=new Vector2(lastSafe.xMax/Screen.width,lastSafe.yMax/Screen.height);safeArea.offsetMin=safeArea.offsetMax=Vector2.zero;
         Canvas.ForceUpdateCanvases();
+        if(presentation!=null)
+        {
+            presentation.Layout();
+            if(Selected!=null)RefreshSelection();
+            lastLayoutSize=safeArea.rect.size;
+            return;
+        }
         float w=safeArea.rect.width;bool wide=w>1000;
         Top(header,24,12,w-48,82);
         var viewport=weaponScroll.viewport;viewport.anchorMin=Vector2.zero;viewport.anchorMax=Vector2.one;viewport.offsetMin=new Vector2(24,12);viewport.offsetMax=new Vector2(-24,-110);

@@ -1,0 +1,31 @@
+PASS: LOCKER opens separate inventory, Shop stays closed.
+PASS: Only real owned catalog weapons appear, including starter.
+PASS: Card names and thumbnails match catalog.
+PASS: Owned card click updates name and stats.
+PASS: Existing live 3D preview renderer reused.
+PASS: Preview drag rotates the actual 3D weapon.
+PASS: Selected and equipped are distinct before equip.
+PASS: EQUIP uses existing saved catalog selection.
+PASS: Current weapon has disabled EQUIPPED action; no unsupported unequip.
+PASS: Equip does not debit either wallet.
+PASS: Unowned weapon cannot be selected or equipped.
+PASS: Non-catalog object with an owned ID is rejected.
+PASS: Repeated close/open retains selection without duplicate cards.
+PASS: Close hides Locker and its preview stage.
+PASS: SHOP still opens original Shop and reflects Locker equipment.
+PASS: Existing Shop Buy unlocks and equips through unchanged catalog.
+PASS: New Shop purchase appears immediately in Locker without restart.
+PASS: Ownership revoked before Equip is revalidated; stale selection removed.
+PASS: Minimal inventory shows only the always-owned starter.
+PASS: Empty catalog is handled safely with disabled action and hidden preview.
+PASS: All-owned inventory creates exactly one active card per weapon.
+PASS: Long inventory uses a clipped vertical scroll.
+PASS: Touch-style upward drag scrolls the inventory.
+PASS: Last owned card is fully reachable at the scroll end.
+PASS: SETTINGS retains existing destination.
+PASS: Settings existing close button still works.
+PASS: Valid persistent event: Equip
+PASS: Valid persistent event: Close
+PASS: Valid persistent event: Btn_Locker
+PASS: No missing scripts in Locker hierarchy.
+PASS: All audited PlayerPrefs restored exactly, including absent keys.

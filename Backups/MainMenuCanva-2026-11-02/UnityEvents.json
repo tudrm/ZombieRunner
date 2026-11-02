@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Btn_Play",
+    "events": [
+      {
+        "target": "GlobalObjectId_V1-2-f11888b68e057c346a04191666f8268f-1526381070-0",
+        "method": "StartGame"
+      }
+    ]
+  },
+  {
+    "name": "Btn_Shop",
+    "events": [
+      {
+        "target": "GlobalObjectId_V1-2-f11888b68e057c346a04191666f8268f-590898652-0",
+        "method": "OpenShop"
+      }
+    ]
+  },
+  {
+    "name": "Btn_Locker",
+    "events": [
+      {
+        "target": "GlobalObjectId_V1-2-f11888b68e057c346a04191666f8268f-590898652-0",
+        "method": "OpenShop"
+      }
+    ]
+  },
+  {
+    "name": "Btn_Settings",
+    "events": [
+      {
+        "target": "GlobalObjectId_V1-2-f11888b68e057c346a04191666f8268f-1526381071-0",
+        "method": "Open"
+      }
+    ]
+  }
+]

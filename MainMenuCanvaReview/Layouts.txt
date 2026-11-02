@@ -1,0 +1,5 @@
+1179x2556: PASS bounds, no overlap, text fit, touch targets, simulated safe area, image aspect/cover.
+1080x1920: PASS bounds, no overlap, text fit, touch targets, simulated safe area, image aspect/cover.
+720x1600: PASS bounds, no overlap, text fit, touch targets, simulated safe area, image aspect/cover.
+640x1536: PASS bounds, no overlap, text fit, touch targets, simulated safe area, image aspect/cover.
+1536x2048: PASS bounds, no overlap, text fit, touch targets, simulated safe area, image aspect/cover.

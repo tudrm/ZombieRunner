@@ -1,0 +1,33 @@
+PASS: Existing binding Btn_Play -> StartGame
+PASS: Native editable label Btn_Play
+PASS: Pressed/selected/disabled feedback Btn_Play
+PASS: Touchable hit target Btn_Play
+PASS: Existing binding Btn_Shop -> OpenShop
+PASS: Native editable label Btn_Shop
+PASS: Pressed/selected/disabled feedback Btn_Shop
+PASS: Touchable hit target Btn_Shop
+PASS: Existing binding Btn_Locker -> OpenShop
+PASS: Native editable label Btn_Locker
+PASS: Pressed/selected/disabled feedback Btn_Locker
+PASS: Touchable hit target Btn_Locker
+PASS: Existing binding Btn_Settings -> Open
+PASS: Native editable label Btn_Settings
+PASS: Pressed/selected/disabled feedback Btn_Settings
+PASS: Touchable hit target Btn_Settings
+PASS: SHOP opens existing Shop
+PASS: Shop X returns to Main Menu
+PASS: LOCKER retains existing shared Shop destination
+PASS: SETTINGS opens existing panel
+PASS: Settings Close returns to Main Menu
+PASS: All menu controls remain active after returning
+PASS: No missing scripts on Main Menu
+
+PASS: PLAY actual pressed tint after pointer down.
+PASS: PLAY actual disabled tint.
+PASS: PLAY opened original loading panel.
+PASS: PLAY original async loading reached ScenaJoc.
+PASS: Invoked original gameplay return button ButonExit.
+PASS: All audited PlayerPrefs unchanged after navigation and gameplay scene roundtrip.
+PASS: MainMenu returned with editable presentation and active PLAY.
+PASS: Reopened saved scene; all original persistent event targets and methods unchanged.
+PASS: Reopened menu references intact; no missing scripts on menu controls.

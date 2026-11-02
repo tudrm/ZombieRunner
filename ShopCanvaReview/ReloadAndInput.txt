@@ -1,0 +1,5 @@
+Scene reload retains wallets and equipped weapon: True
+Missing Shop scripts: 0
+Unbound ShopManager references (except unconfigured provider): 
+ScrollRect vertical pointer drag: True
+1179x2556: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.

@@ -1,0 +1,8 @@
+1179x2556: PASS text, safe area, bounds, touch targets, background aspect.
+1080x1920: FAIL Overflow: RotateHint=360°  DRAG TO ROTATE; Overflow: RotateHint=360°  DRAG TO ROTATE
+1080x1920: PASS text, safe area, bounds, touch targets, background aspect.
+720x1600: PASS text, safe area, bounds, touch targets, background aspect.
+720x1600: PASS text, safe area, bounds, touch targets, background aspect.
+640x1536: PASS text, safe area, bounds, touch targets, background aspect.
+1536x2048: FAIL Overflow: Caption=DAMAGE; Overflow: Caption=FIRE RATE / RPM; Overflow: Caption=DAMAGE / SEC
+1179x2556: PASS text, safe area, bounds, touch targets, background aspect.

@@ -1,0 +1,9 @@
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\ShopManager.cs
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\WeaponPreview.cs
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\ShopPresentation.cs
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\ShopWeaponCard.cs
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\SettingsMenu.cs
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\Scenes\ScenaJoc.unity
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\Settings\WeaponCatalog.asset
+PASS: Protected file unchanged: D:\UnityProjects\ZombieRunner\Assets\Settings\GemStore.asset
+PASS: Original scene objects retained; no serialized changes outside Main Menu scope.

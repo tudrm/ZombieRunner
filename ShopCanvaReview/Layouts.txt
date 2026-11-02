@@ -1,0 +1,8 @@
+1179x2556: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+1179x2556: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+1080x1920: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+720x1600: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+640x1536: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+1536x2048: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+1080x1920: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.
+1179x2556: PASS layout, text overflow, Gem bounds, full-width offer, simulated safe insets.

@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShopManager.cs",
+    "Hash": "59B932D44DC03C3F926534AA995B033EC3A5CE4EBD83A3EACDC7B44FAD939AC2"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\WeaponPreview.cs",
+    "Hash": "2CD6EFCE862F1C130C24CE0E2AD2A3AB2872631AC656F43B468EF69BFDA97256"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShopPresentation.cs",
+    "Hash": "541682085D10E6F00042ECDCE42724915529AA9908B0DCEF985C4856E6F35C4D"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\ShopWeaponCard.cs",
+    "Hash": "CDC7D7BF8AC5EF6310CDDCD5AF5206FD80469315B433D395DB1779466F5D313A"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\SettingsMenu.cs",
+    "Hash": "45BED3D9B5F82B86CBC1E9CCDA1717C7D018083AE5E8E072D777B08376B90945"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Scenes\\ScenaJoc.unity",
+    "Hash": "FBCEA7CE226F5859C77DB47C05D7494CA844ACE26C082B37AB39C62987DCB617"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\WeaponCatalog.asset",
+    "Hash": "4C31CA70612CE46A14104FAB68B9C31840ACAC7B832DD71CB1FC41865F285950"
+  },
+  {
+    "Path": "D:\\UnityProjects\\ZombieRunner\\Assets\\Settings\\GemStore.asset",
+    "Hash": "F89A4E20A349204BF04E935C16EC539400D51CF2E6728179583AB7A62378E0EE"
+  }
+]

@@ -1,0 +1,95 @@
+PASS: Existing catalog has 20 weapons.
+PASS: Tab onClick: 0
+PASS: Category card count: 0
+PASS: Card selection/stats: pistol_A
+PASS: Live model RenderTexture: pistol_A
+PASS: Selected frame: pistol_A
+PASS: Card selection/stats: pistol_B
+PASS: Live model RenderTexture: pistol_B
+PASS: Selected frame: pistol_B
+PASS: Card selection/stats: pistol_C
+PASS: Live model RenderTexture: pistol_C
+PASS: Selected frame: pistol_C
+PASS: Card selection/stats: pistol_D
+PASS: Live model RenderTexture: pistol_D
+PASS: Selected frame: pistol_D
+PASS: Card selection/stats: pistol_E
+PASS: Live model RenderTexture: pistol_E
+PASS: Selected frame: pistol_E
+PASS: Card selection/stats: pistol_F
+PASS: Live model RenderTexture: pistol_F
+PASS: Selected frame: pistol_F
+PASS: Card selection/stats: pistol_G
+PASS: Live model RenderTexture: pistol_G
+PASS: Selected frame: pistol_G
+PASS: Card selection/stats: pistol_H
+PASS: Live model RenderTexture: pistol_H
+PASS: Selected frame: pistol_H
+PASS: Card selection/stats: pistol_I
+PASS: Live model RenderTexture: pistol_I
+PASS: Selected frame: pistol_I
+PASS: Card selection/stats: pistol_J
+PASS: Live model RenderTexture: pistol_J
+PASS: Selected frame: pistol_J
+PASS: Tab onClick: 1
+PASS: Category card count: 1
+PASS: Card selection/stats: smg_F
+PASS: Live model RenderTexture: smg_F
+PASS: Selected frame: smg_F
+PASS: Card selection/stats: smg_G
+PASS: Live model RenderTexture: smg_G
+PASS: Selected frame: smg_G
+PASS: Card selection/stats: smg_H
+PASS: Live model RenderTexture: smg_H
+PASS: Selected frame: smg_H
+PASS: Card selection/stats: smg_I
+PASS: Live model RenderTexture: smg_I
+PASS: Selected frame: smg_I
+PASS: Card selection/stats: smg_J
+PASS: Live model RenderTexture: smg_J
+PASS: Selected frame: smg_J
+PASS: Tab onClick: 2
+PASS: Category card count: 2
+PASS: Card selection/stats: ar_L
+PASS: Live model RenderTexture: ar_L
+PASS: Selected frame: ar_L
+PASS: Card selection/stats: ar_M
+PASS: Live model RenderTexture: ar_M
+PASS: Selected frame: ar_M
+PASS: Card selection/stats: ar_N
+PASS: Live model RenderTexture: ar_N
+PASS: Selected frame: ar_N
+PASS: Card selection/stats: ar_O
+PASS: Live model RenderTexture: ar_O
+PASS: Selected frame: ar_O
+PASS: Card selection/stats: ar_P
+PASS: Live model RenderTexture: ar_P
+PASS: Selected frame: ar_P
+PASS: Insufficient wallets disable purchase controls.
+PASS: Existing insufficient Coins feedback.
+PASS: Existing insufficient Gems feedback.
+PASS: Buy Coins UI debits only Coins, owns and equips.
+PASS: Repeat action cannot double-charge.
+PASS: Buy Gems UI uses existing purchase logic.
+PASS: Owned state exposes Equip.
+PASS: Equip and Equipped state.
+PASS: Close/reopen keeps actual equipped loadout.
+PASS: Original five euro prices preserved.
+PASS: Original Gem quantities preserved.
+PASS: Unavailable pack grants nothing: 0
+PASS: Unavailable pack grants nothing: 1
+PASS: Unavailable pack grants nothing: 2
+PASS: Unavailable pack grants nothing: 3
+PASS: Unavailable pack grants nothing: 4
+PASS: One clipped vertical scroll; no horizontal scrolling.
+PASS: Persistent event: Gems_200
+PASS: Persistent event: Gems_550
+PASS: Persistent event: Gems_1200
+PASS: Persistent event: Gems_7000
+PASS: Persistent event: Gems_16000
+PASS: Persistent event: Coins
+PASS: Persistent event: Gems
+PASS: Persistent event: Btn_ExitToMenu
+PASS: Persistent event: Close
+PASS: Both wallet shortcuts retain ShowGems binding.
+PASS: All touched PlayerPrefs restored exactly, including absent keys.

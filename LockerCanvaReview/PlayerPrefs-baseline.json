@@ -1,0 +1,160 @@
+{
+    "entries": [
+        {
+            "key": "ZR_Owned_pistol_A",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_B",
+            "value": "1",
+            "kind": "int",
+            "exists": true
+        },
+        {
+            "key": "ZR_Owned_pistol_C",
+            "value": "1",
+            "kind": "int",
+            "exists": true
+        },
+        {
+            "key": "ZR_Owned_pistol_D",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_E",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_F",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_G",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_H",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_I",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_pistol_J",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_smg_F",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_smg_G",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_smg_H",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_smg_I",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_smg_J",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_ar_L",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_ar_M",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_ar_N",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_ar_O",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "ZR_Owned_ar_P",
+            "value": "0",
+            "kind": "int",
+            "exists": false
+        },
+        {
+            "key": "MonedeSalvate",
+            "value": "100",
+            "kind": "int",
+            "exists": true
+        },
+        {
+            "key": "GemuriSalvate",
+            "value": "20",
+            "kind": "int",
+            "exists": true
+        },
+        {
+            "key": "HighScore",
+            "value": "520",
+            "kind": "int",
+            "exists": true
+        },
+        {
+            "key": "ZR_EquippedWeapon",
+            "value": "pistol_B",
+            "kind": "string",
+            "exists": true
+        },
+        {
+            "key": "ZR_EffectsVolume",
+            "value": "0.7208888",
+            "kind": "float",
+            "exists": true
+        },
+        {
+            "key": "ZR_MusicVolume",
+            "value": "0.826915443",
+            "kind": "float",
+            "exists": true
+        }
+    ]
+}

@@ -1,0 +1,150 @@
+{
+  "design": "https://www.canva.com/design/DAHZsSxLLV0/1RBvtQRZ1R3Ay8ibJtjnGg/edit",
+  "note": "Downloaded connector thumbnails, NOT full-resolution exports. Hero used only as a cropped city background; weapon rendering remains live 3D.",
+  "assets": [
+    {
+      "file": "Coin.png",
+      "canvaAssetId": "MAHZsY72oJg",
+      "sourceSize": [
+        62,
+        57
+      ],
+      "downloadedSize": [
+        62,
+        57
+      ]
+    },
+    {
+      "file": "Gem.png",
+      "canvaAssetId": "MAHZsQM2K-k",
+      "sourceSize": [
+        62,
+        57
+      ],
+      "downloadedSize": [
+        62,
+        57
+      ]
+    },
+    {
+      "file": "TabActive.png",
+      "canvaAssetId": "MAHZscyI4T0",
+      "sourceSize": [
+        346,
+        94
+      ],
+      "downloadedSize": [
+        200,
+        54
+      ]
+    },
+    {
+      "file": "Hero.png",
+      "canvaAssetId": "MAHZsS4aq54",
+      "sourceSize": [
+        1015,
+        504
+      ],
+      "downloadedSize": [
+        200,
+        99
+      ]
+    },
+    {
+      "file": "BuyCoins.png",
+      "canvaAssetId": "MAHZsQpuhtE",
+      "sourceSize": [
+        387,
+        94
+      ],
+      "downloadedSize": [
+        199,
+        48
+      ]
+    },
+    {
+      "file": "BuyGems.png",
+      "canvaAssetId": "MAHZsYopZN8",
+      "sourceSize": [
+        386,
+        94
+      ],
+      "downloadedSize": [
+        199,
+        48
+      ]
+    },
+    {
+      "file": "Card.png",
+      "canvaAssetId": "MAHZsbuH1m4",
+      "sourceSize": [
+        508,
+        150
+      ],
+      "downloadedSize": [
+        200,
+        59
+      ]
+    },
+    {
+      "file": "Gems200.png",
+      "canvaAssetId": "MAHZsUHsahM",
+      "sourceSize": [
+        82,
+        94
+      ],
+      "downloadedSize": [
+        82,
+        94
+      ]
+    },
+    {
+      "file": "Gems550.png",
+      "canvaAssetId": "MAHZsWALkBY",
+      "sourceSize": [
+        164,
+        94
+      ],
+      "downloadedSize": [
+        164,
+        94
+      ]
+    },
+    {
+      "file": "Gems1200.png",
+      "canvaAssetId": "MAHZsTLlMtE",
+      "sourceSize": [
+        163,
+        94
+      ],
+      "downloadedSize": [
+        163,
+        94
+      ]
+    },
+    {
+      "file": "Gems7000.png",
+      "canvaAssetId": "MAHZsaxLcfk",
+      "sourceSize": [
+        204,
+        94
+      ],
+      "downloadedSize": [
+        200,
+        92
+      ]
+    },
+    {
+      "file": "Gems16000.png",
+      "canvaAssetId": "MAHZsfeOA4I",
+      "sourceSize": [
+        447,
+        132
+      ],
+      "downloadedSize": [
+        200,
+        59
+      ]
+    }
+  ]
+}

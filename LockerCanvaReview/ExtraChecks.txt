@@ -1,0 +1,3 @@
+NOT TESTED: Initial raycast ran before the first rendered frame; superseded by the check below.
+PASS: Visible Locker updates external ownership through its normal Update loop.
+PASS: After rendered frame, raycast hits Equip, Close and owned card.
